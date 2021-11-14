@@ -144,8 +144,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html class="no-js" lang="zxx">
 <head>
     
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
     <title>Caring Paws | Home</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -517,7 +520,58 @@ table{
 
     <main> 
 
-       
+        <!--? Slider Area Start-->
+        <div class="slider-area">
+            <div class="slider-active dot-style">
+                <!-- Slider Single -->
+                <div class="single-slider d-flex align-items-center slider-height">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-xl-7 col-lg-8 col-md-10 ">
+                                <!-- Video icon 
+                                <div class="video-icon">
+                                    <a class="popup-video btn-icon" href="" data-animation="bounceIn" data-delay=".4s">
+                                        <i class="fas fa-play"></i>
+                                    </a>
+                                </div>-->
+                                <div class="hero__caption">
+                                    <span data-animation="fadeInUp" data-delay=".3s">Need an urgent help?</span>
+                                    <h1  data-animation="fadeInUp" data-delay=".3s">Connect With Us.</h1>
+                                    <p data-animation="fadeInUp" data-delay=".6s">CaringPaws is your trusted source of pet care information. <br>Talk to a vet today! Contact us now and make an appointment today.</p>
+                                    <a href="https://m.me/CaringPawsPH" class="hero-btn" data-animation="fadeInLeft" data-delay=".3s">Message Now<i class="ti-arrow-right"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+                <!-- Slider Single -->
+                <div class="single-slider d-flex align-items-center slider-height">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-xl-7 col-lg-8 col-md-10 ">
+                                <!-- Video icon -->
+                                <!--<div class="video-icon">
+                                    <a class="popup-video btn-icon" href="" data-animation="bounceIn" data-delay=".4s">
+                                        <i class="fas fa-play"></i>
+                                    </a>
+                                </div>-->
+                                <div class="hero__caption">
+                                    <span data-animation="fadeInUp" data-delay=".3s">Here in CaringPaws,</span>
+                                    <h1 data-animation="fadeInUp" data-delay=".3s"  style="padding-right: 3px;">We Care for Your Pets.</h1>
+                                    <p data-animation="fadeInUp" data-delay=".6s">CaringPaws is your trusted source of pet care information. <br>Talk to a vet today! Contact us now and make an appointment today.</p>
+                                    <a href="http://localhost/caringpaws/index.php#contact-form-top" class="hero-btn" data-animation="fadeInLeft" data-delay=".3s">Email Us<i class="ti-arrow-right"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+            </div>
+            <!-- slider Social -->
+            <div class="button-text d-none d-md-block">
+            <span></span>
+            </div>
+        </div>
+        <!-- Slider Area End -->
         
         <!--? Our Services Start -->
     <div class="container" style="margin: 0 auto; padding: 8rem; width: 52rem;">
