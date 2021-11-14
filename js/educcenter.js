@@ -27,7 +27,7 @@ $(document).ready(function(){var delay = 5000;
 
         $.ajax({
             type: "POST",
-            url: "http://localhost/caringpaws/healthblog.php",
+            url: "https://caringpaws-ph.herokuapp.com/healthblog.php",
             data: {dataTitle1 : dataTitle1 },
             cache: true,
             success: function(response) {
@@ -47,7 +47,7 @@ $(document).ready(function(){
         //alert(dataTitle);
         $.ajax({
             type: "POST",
-            url: "http://localhost/caringpaws/behaviorblog.php",
+            url: "https://caringpaws-ph.herokuapp.com/behaviorblog.php",
             data: { dataTitle2 : dataTitle2 },
             cache: true,
             success: function(data) {
@@ -66,7 +66,7 @@ $(document).ready(function(){
         //alert(dataTitle);
         $.ajax({
             type: "POST",
-            url: "http://localhost/caringpaws/nutritionblog.php",
+            url: "https://caringpaws-ph.herokuapp.com/nutritionblog.php",
             data: { dataTitle3 : dataTitle3 },
             cache: true,
             success: function(data) {
@@ -87,7 +87,7 @@ $(document).ready(function(){
         //alert(dataTitle);
         $.ajax({
             type: "POST",
-            url: "http://localhost/caringpaws/careblog.php",
+            url: "https://caringpaws-ph.herokuapp.com/careblog.php",
             data: { dataTitle4 : dataTitle4 },
             cache: true,
             success: function(data) {
@@ -108,7 +108,7 @@ $(document).ready(function(){
         //alert(dataTitle);
         $.ajax({
             type: "POST",
-            url: "http://localhost/caringpaws/breedsblog.php",
+            url: "https://caringpaws-ph.herokuapp.com/breedsblog.php",
             data: { dataTitle5 : dataTitle5 },
             cache: true,
             success: function(data) {
