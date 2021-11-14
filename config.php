@@ -8,10 +8,15 @@
 <?php
 /* Database credentials. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
-define('DB_SERVER', 'sql104.epizy.com');
-define('DB_USERNAME', 'epiz_30358128');
-define('DB_PASSWORD', 'pqJg7V8JSc6PP');
-define('DB_NAME', 'epiz_30358128_db_healthcare');
+//define('DB_SERVER', 'localhost');
+//define('DB_USERNAME', 'root');
+//define('DB_PASSWORD', '');
+//define('DB_NAME', 'db_healthcare');
+
+define('DB_SERVER', 'remotemysql.com');
+define('DB_USERNAME', 'UPc1x6hhWL');
+define('DB_PASSWORD', 'xaeSCnp1RQ');
+define('DB_NAME', 'UPc1x6hhWL');
  
 /* Attempt to connect to MySQL database */
 $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
