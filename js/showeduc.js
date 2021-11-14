@@ -1,4 +1,4 @@
-$(document).ready(function(){var delay = 5000;
+$(document).ready(function(){
     // code to read selected table row cell data (values).
     $("#healthTable").on('click','.btnSelect',function(){
         // get the current row
@@ -8,13 +8,12 @@ $(document).ready(function(){var delay = 5000;
         //alert(dataTitle);
 
         $.ajax({
-            type: "POST",
+            method: "POST",
             url: "https://caringpaws-ph.herokuapp.com/healthblog.php",
             data: {dataTitle1 : dataTitle1 },
             dataType: "html",
             cache: true,
             success: function(response) {
-                setTimeout(continueExecution, 10000);
             }
         });
     });
@@ -29,7 +28,7 @@ $(document).ready(function(){
         
         //alert(dataTitle);
         $.ajax({
-            type: "POST",
+            method: "POST",
             url: "https://caringpaws-ph.herokuapp.com/behaviorblog.php",
             data: { dataTitle2 : dataTitle2 },
             dataType: "html",
@@ -49,7 +48,7 @@ $(document).ready(function(){
         
         //alert(dataTitle);
         $.ajax({
-            type: "POST",
+            method: "POST",
             url: "https://caringpaws-ph.herokuapp.com/nutritionblog.php",
             data: { dataTitle3 : dataTitle3 },
             dataType: "html",
@@ -71,7 +70,7 @@ $(document).ready(function(){
         
         //alert(dataTitle);
         $.ajax({
-            type: "POST",
+            method: "POST",
             url: "https://caringpaws-ph.herokuapp.com/careblog.php",
             data: { dataTitle4 : dataTitle4 },
             dataType: "html",
@@ -93,7 +92,7 @@ $(document).ready(function(){
         
         //alert(dataTitle);
         $.ajax({
-            type: "POST",
+            method: "POST",
             url: "https://caringpaws-ph.herokuapp.com/breedsblog.php",
             data: { dataTitle5 : dataTitle5 },
             dataType: "html",
