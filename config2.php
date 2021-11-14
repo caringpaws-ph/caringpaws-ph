@@ -24,7 +24,7 @@ $mysqli2 = mysqli_connect('remotemysql.com', 'UPc1x6hhWL', 'xaeSCnp1RQ', 'UPc1x6
  
 // Check connection
 if($mysqli2 === false){
-    die("ERROR: Could not connect. " . $mysqli2->connect_error);
+    die("ERROR: Could not connect. " . $mysqli2->mysqli_connect_error());
 }
 
 //try{

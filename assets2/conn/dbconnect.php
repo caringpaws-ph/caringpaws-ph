@@ -22,7 +22,7 @@ $con = mysqli_connect('remotemysql.com', 'UPc1x6hhWL', 'xaeSCnp1RQ', 'UPc1x6hhWL
  
 // Check connection
 if($con === false){
-    die("ERROR: Could not connect. " . $mysqli->connect_error);
+    die("ERROR: Could not connect. " . $mysqli->mysqli_connect_error());
 }
 
 //try{
