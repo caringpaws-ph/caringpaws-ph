@@ -1,0 +1,44 @@
+<?php
+session_start();
+
+  $msg = "";
+  $msg_class = "";
+  
+  include_once '../assets2/conn/dbconnect.php';
+  
+  if (isset($_POST['save_profile'])) {
+    // for the database
+    $profileImageName = time() . '-' . $_FILES["profileImage"]["name"];
+    // For image upload
+    $target_dir = "images/";
+    $target_file = $target_dir . basename($profileImageName);
+    // VALIDATION
+    // validate image size. Size is calculated in Bytes
+    if($_FILES['profileImage']['size'] > 200000) {
+      $msg = "Image size should not be greated than 200 KB";
+      $msg_class = "alert-danger";
+    }
+    // check if file exists
+    if(file_exists($target_file)) {
+      $msg = "File already exists";
+      $msg_class = "alert-danger";
+    }
+    // Upload image only if no errors
+    if (empty($error)) {
+      if(move_uploaded_file($_FILES["profileImage"]["tmp_name"], $target_file)) {
+        $sql = "UPDATE blogger SET profile_image='$profileImageName' WHERE bloggerId='{$_SESSION['bloggerSession']}' ";
+        if(mysqli_query($con, $sql)){
+          $msg = "Image uploaded and saved in the Database";
+          $msg_class = "alert-success"; 
+          header("location: ./uploadbloggerpicture.php");
+        } else {
+          $msg = "There was an error in the database";
+          $msg_class = "alert-danger";
+        }
+      } else {
+        $error = "There was an erro uploading the file";
+        $msg = "alert-danger";
+      }
+    }
+  }
+?>

@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: helvetica;
+}
+
+.flatTable {
+    border-collapse: collapse;
+    font-weight: bold;
+    color: #464545;
+}
+.flatTable tr {
+    height: 70px;
+    background: #d4d1d5;
+    border-bottom: rgba(0,0,0,0.05) 1px solid;
+}
+.flatTable td {
+    box-sizing: border-box;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.flatTable .titleTr {
+    height: 70px;
+    color: #f6f3f7;
+    background: #f06060;
+    border: 0px solid;
+}
+.flatTable .headingTr {
+    height: 70px;
+    background: #bb8181;
+    color: #f6f3f7;
+    font-size: 10pt;
+    padding: 10px;
+    border: 0px solid;
+}
