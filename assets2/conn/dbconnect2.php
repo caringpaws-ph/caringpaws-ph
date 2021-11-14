@@ -19,13 +19,20 @@ define('DB_PASSWORD', 'xaeSCnp1RQ');
 define('DB_NAME', 'UPc1x6hhWL');
  
 /* Attempt to connect to MySQL database */
-$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+//$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
  
 // Check connection
-if($conn === false){
-    die("ERROR: Could not connect. " . $mysqli->connect_error);
-}
-?>
+//if($conn === false){
+//    die("ERROR: Could not connect. " . $mysqli->connect_error);
+//}
+
+try{
+    $conn = new PDO("mysql:host=" . DB_SERVER . ";dbname=" . DB_NAME, DB_USERNAME, DB_PASSWORD);
+    // Set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e){
+    die("ERROR: Could not connect. " . $e->getMessage());
+}?>
 
 </body>
 </html>
