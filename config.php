@@ -12,23 +12,18 @@ server with default setting (user 'root' with no password) */
 //define('DB_USERNAME', 'root');
 //define('DB_PASSWORD', '');
 //define('DB_NAME', 'db_healthcare');
+
+define('DB_SERVER', 'remotemysql.com');
+define('DB_USERNAME', 'UPc1x6hhWL');
+define('DB_PASSWORD', 'xaeSCnp1RQ');
+define('DB_NAME', 'UPc1x6hhWL');
  
-$db_host        = 'remotemysql.com';
-
-$db_user        = 'UPc1x6hhWL';
-
-$db_pass        = 'xaeSCnp1RQ';
-
-$db_database    = 'UPc1x6hhWL'; 
-
-$db_port        = '3306';
-
 /* Attempt to connect to MySQL database */
-$mysqli = mysqli_connect($db_host , $db_user , $db_pass, $db_database ,$db_port);
+$mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
  
 // Check connection
 if($mysqli === false){
-    die("ERROR: Could not connect. " . $mysqli->mysqli_connect_error());
+    die("ERROR: Could not connect. " . $mysqli->connect_error);
 }
 
 //try{
