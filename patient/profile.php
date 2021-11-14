@@ -996,7 +996,6 @@ $pfemale2="";
 			<!-- CONATINER END -->
 
 
-
 <br>
 <br>
 <br>
@@ -1006,33 +1005,10 @@ $pfemale2="";
 <br>
 <br>
 <br>
-
-
-
-
-
-
-
-
-
-
 
 			<script src="assets/js/jquery.js"></script>
 			<script src="assets/js/bootstrap.min.js"></script>
 			
-<script>
-   // $(document).ready(function(){
-    //  var date_input=$('input[name="patientDOB"]'); //our date input has the name "date"
-    //  var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-     // var options={
-        //format: 'yyyy-mm-dd',
-        //container: container,
-       // todayHighlight: true,
-       // autoclose: true,
-     // };
-   //   date_input.datepicker(options);
- //   })
-</script>
 			<script>
 				function triggerClick(e) {
     				document.querySelector('#profileImage').click();
@@ -1082,6 +1058,5 @@ $pfemale2="";
 			
 
 </script>
-<!--<iframe name="frame"></iframe>-->
 		</body>
 	</html>

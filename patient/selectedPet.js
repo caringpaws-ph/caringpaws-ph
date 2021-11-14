@@ -4,7 +4,7 @@ function selectedPet(){
     //alert(x);
 
     $.ajax({
-        url:"https://caringpaws-ph.herokuapp.com/caringpaws/patient/showSelected.php",
+        url:"https://caringpaws-ph.herokuapp.com/patient/showSelected.php",
         method: "POST",
         data:{ x : x },
         success:function(data){
