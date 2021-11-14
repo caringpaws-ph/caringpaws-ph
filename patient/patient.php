@@ -96,7 +96,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 								</li>
 								<li class="divider"></li>
 								<li>
-									<a href="../main.php"><i class="glyphicon glyphicon-home"></i> Home</a>	
+									<a href="../index.php"><i class="glyphicon glyphicon-home"></i> Home</a>	
 								</li>
 
 								<li>

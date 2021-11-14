@@ -101,12 +101,12 @@ if(isset($_POST["send_message"])){
     if($sentMail) //output success or failure messages
     {   
         $_SESSION["success"] = "Thank you for your question!\nWe will reply as soon as possible.";
-        header("location: main.php");   
+        header("location: index.php");   
         exit;
         
     }else{
         $_SESSION["failed"] = "Could not send mail! Please try again."; 
-        header("location: main.php");
+        header("location: index.php");
         exit;
     }
 }

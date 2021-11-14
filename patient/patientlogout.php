@@ -19,7 +19,7 @@ session_start();
 
 unset($_SESSION['patientSession']);
 // Redirect to login page
-header("location: ./../main.php");
+header("location: ./../index.php");
 //exit;
 ?>
 </body>

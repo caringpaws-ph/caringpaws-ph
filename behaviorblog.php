@@ -8,7 +8,7 @@ if (!isset($_SESSION)) {
   }
   // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-  header("location: main.php");
+  header("location: index.php");
   exit;
 }
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -28,7 +28,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
   //GET THE TITLE BRO
   $_GET['p2'] = 100;
-  $dataTitle2 = isset($_POST['dataTitle2']) ? $_POST['dataTitle2'] : header("Location: http://localhost/caringpaws/main.php" . $_SERVER['REDIRECT_URI'] . '?' . http_build_query($_GET)); 
+  $dataTitle2 = isset($_POST['dataTitle2']) ? $_POST['dataTitle2'] : header("Location: http://localhost/caringpaws/index.php" . $_SERVER['REDIRECT_URI'] . '?' . http_build_query($_GET)); 
   $_SESSION['theTitle2'] = $dataTitle2;
 
   $sql5 = "SELECT idBlogger, Behavior, Message FROM behavior WHERE Behavior='" . $_SESSION['theTitle2'] . "'";
@@ -125,7 +125,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                       <!-- Logo -->
                       <div class="col-xl-2 col-lg-2 col-md-1">
                           <div class="logo">
-                              <a href="main.php"><img src="./logo/logo.png" alt=""></a>
+                              <a href="index.php"><img src="./logo/logo.png" alt=""></a>
                           </div>
                       </div>
                       <div class="col-xl-10 col-lg-10 col-md-10">
@@ -134,7 +134,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                               <div class="main-menu f-right d-none d-lg-block">
                               <nav> 
                                         <ul id="navigation">
-                                            <!--<li><a href="main.php">Home</a></li>-->
+                                            <!--<li><a href="index.php">Home</a></li>-->
                                             <li><a href="about.php">About</a></li>
                                             <li><a href="services.php">Services</a></li>
                                             <!--<li><a href="blog1.php">Educational Center</a>

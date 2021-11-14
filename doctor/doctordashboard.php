@@ -4,7 +4,7 @@ include_once '../assets2/conn/dbconnect.php';
 // include_once 'connection/server.php';
 if(!isset($_SESSION['doctorSession']))
 {
-header("Location: ../main.php");
+header("Location: ../index.php");
 }
 $usersession = $_SESSION['doctorSession'];
 $res=mysqli_query($con,"SELECT * FROM doctor WHERE doctorId=".$usersession);

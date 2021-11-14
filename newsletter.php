@@ -25,12 +25,12 @@ $mail2 = mail( $recipient, $subject, $body, "From: $sender" ) or die ("Mail coul
 
 if ($mail2) { 
     $_SESSION["success2"] = "<center><div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-success\">You are now subscribed, Thank you!</div><center>";
-    header("location: main.php");   
+    header("location: index.php");   
     exit;
  }
   else { 
     $_SESSION["failed2"] = "<center><div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-danger\">Something went wrong. Please try again.</div><center>"; 
-    header("location: main.php");
+    header("location: index.php");
     exit; 
  }
 }

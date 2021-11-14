@@ -7,12 +7,12 @@ if(!isset($_SESSION['bloggerSession']))
 }
 else if(isset($_SESSION['bloggerSession'])!="")
 {
- header("Location: ../main.php");
+ header("Location: ../index.php");
 }
 if(isset($_GET['logout']))
 {
  session_destroy();
  unset($_SESSION['bloggerSession']);
- header("Location: ../main.php");
+ header("Location: ../index.php");
 }
 ?>

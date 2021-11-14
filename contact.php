@@ -101,7 +101,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             }
                             
                             // Redirect user to welcome page
-                            header("location: ./main.php");
+                            header("location: ./index.php");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
@@ -211,7 +211,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-1">
                             <div class="logo">
-                                <a href="main.php"><img src="logo/logo.png" alt=""></a>
+                                <a href="index.php"><img src="logo/logo.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-md-10">
@@ -220,8 +220,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav> 
                                         <ul id="navigation">
-                                            <!--<li><a href="main.php">Home</a></li>-->
-                                            <li><a href="main.php" style="font-weight: bold;">Home</a></li>
+                                            <!--<li><a href="index.php">Home</a></li>-->
+                                            <li><a href="index.php" style="font-weight: bold;">Home</a></li>
                                             <li><a href="about.php" style="font-weight: bold;">About</a></li>
                                             <!--<li><a href="blog1.php">Educational Center</a>-->
                                                 <!--<ul class="submenu">-->
@@ -414,7 +414,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                          <div class="single-footer-caption mb-30">
                               <!-- logo -->
                              <div class="footer-logo mb-25">
-                                 <a href="main.php"><img src="logo/logo2_footer.png" alt=""></a>
+                                 <a href="index.php"><img src="logo/logo2_footer.png" alt=""></a>
                              </div>
                              <div class="footer-tittle">
                                  <div class="footer-pera">
@@ -436,7 +436,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <div class="footer-tittle">
                                 <h4>Caring Paws</h4>
                                 <ul>
-                                    <li><a href="main.php">Home</a></li>
+                                    <li><a href="index.php">Home</a></li>
                                     <li><a href="about.php">About Us</a></li>
                                     <li><a href="services.php">Services</a></li>
                                     <li><a href="contact.php">  Contact Us</a></li>

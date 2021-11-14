@@ -8,14 +8,14 @@ if(!isset($_SESSION['doctorSession']))
 }
 else if(isset($_SESSION['doctorSession'])!="")
 {
- header("Location: ../main.php");
+ header("Location: ../index.php");
 }
 
 if(isset($_GET['logout']))
 {
  session_destroy();
  unset($_SESSION['doctorSession']);
- header("Location: ../main.php");
+ header("Location: ../index.php");
 }
 
 ?>

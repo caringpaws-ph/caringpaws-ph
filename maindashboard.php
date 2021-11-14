@@ -8545,7 +8545,7 @@ header {
 	        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
 	         <div class="col-xl-2 col-lg-2 col-md-1">
                             <div style="width: 100%; height: 100%;" class="logo">
-                                <a href="main.php"><img src="logo/logo.png" alt=""></a>
+                                <a href="index.php"><img src="logo/logo.png" alt=""></a>
                             </div>
                         </div>
 	        </div>

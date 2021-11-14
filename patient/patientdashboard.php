@@ -6,7 +6,7 @@ session_unset();
 include_once '../assets2/conn/dbconnect.php';
 if(!isset($_SESSION['patientSession']))
 {
-header("Location: ../main.php");
+header("Location: ../index.php");
 }
 $usersession = $_SESSION['patientSession'];
 $res=mysql_query("SELECT * FROM patient WHERE icPatient=".$usersession);

@@ -246,7 +246,7 @@ if(empty(trim($_POST["patientGender"]))){
             if($stmt->execute()){
                 // Redirect to login page
                 $_SESSION["success6"] = "<div style='" . "margin-bottom: 100px; padding-bottom: 20px;" . "' class=\"alert alert-success\">Your account has been registered! Sign in now!</div>";
-                header("location: main.php");
+                header("location: index.php");
                 exit();
                 //if ($stmt2 = $mysqli->prepare("INSERT INTO petprofile (icPet) VALUES (?)")) {
                 //    $stmt2->bind_param('s', $param_icPatient);
@@ -263,7 +263,7 @@ if(empty(trim($_POST["patientGender"]))){
 
             } else{
                 $_SESSION["failed6"] = "<div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-success\">Something went wrong. Please try again later.</div>";
-                header("location: main.php");
+                header("location: index.php");
                 exit();
             }
 
@@ -478,7 +478,7 @@ if(empty(trim($_POST["patientGender"]))){
         <div class="row align-items-center justify-content-center" >
 
 
-                <a href="main.php"><img src="logo/logo.png" alt="" height="70px"></a>
+                <a href="index.php"><img src="logo/logo.png" alt="" height="70px"></a>
        
 
             <hr>
@@ -543,7 +543,7 @@ if(empty(trim($_POST["patientGender"]))){
               <input type="submit" value="Sign Up" class="btn btn-block btn-primary">
               
               <br>
-              <p>Have an account? <a href="main.php">Sign In</a>.</p>
+              <p>Have an account? <a href="index.php">Sign In</a>.</p>
             </form>
           </div>
         </div>

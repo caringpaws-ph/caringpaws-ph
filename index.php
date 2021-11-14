@@ -92,7 +92,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             }
                             
                             // Redirect user to welcome page
-                            header("location: ./main.php");
+                            header("location: ./index.php");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
@@ -361,7 +361,7 @@ table{
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav> 
                                         <ul id="navigation">
-                                            <!--<li><a href="main.php">Home</a></li>-->
+                                            <!--<li><a href="index.php">Home</a></li>-->
                                             <li><a href="about.php" style="font-weight: bold;">About</a></li>
                                             <li><a href="services.php" style="font-weight: bold;">Services</a></li>
                                             <!--<li><a href="blog1.php">Educational Center</a>-->
@@ -511,7 +511,7 @@ table{
                                     <span data-animation="fadeInUp" data-delay=".3s">Here in CaringPaws,</span>
                                     <h1 data-animation="fadeInUp" data-delay=".3s"  style="padding-right: 3px;">We Care for Your Pets.</h1>
                                     <p data-animation="fadeInUp" data-delay=".6s">CaringPaws is your trusted source of pet care information. <br>Talk to a vet today! Contact us now and make an appointment today.</p>
-                                    <a href="http://localhost/caringpaws/main.php#contact-form-top" class="hero-btn" data-animation="fadeInLeft" data-delay=".3s">Email Us<i class="ti-arrow-right"></i> </a>
+                                    <a href="http://localhost/caringpaws/index.php#contact-form-top" class="hero-btn" data-animation="fadeInLeft" data-delay=".3s">Email Us<i class="ti-arrow-right"></i> </a>
                                 </div>
                             </div>
                         </div>
@@ -1299,7 +1299,7 @@ table{
                          <div class="single-footer-caption mb-30">
                               <!-- logo -->
                              <div class="footer-logo mb-25">
-                                 <a href="main.php"><img src="logo/logo2_footer.png" alt=""></a>
+                                 <a href="index.php"><img src="logo/logo2_footer.png" alt=""></a>
                              </div>
                              <div class="footer-tittle">
                                  <div class="footer-pera">
@@ -1321,7 +1321,7 @@ table{
                             <div class="footer-tittle">
                                 <h4>Caring Paws</h4>
                                 <ul>
-                                    <li><a href="main.php">Home</a></li>
+                                    <li><a href="index.php">Home</a></li>
                                     <li><a href="about.php">About Us</a></li>
                                     <li><a href="services.php">Services</a></li>
                                     <li><a href="contact.php">  Contact Us</a></li>

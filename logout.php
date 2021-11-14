@@ -17,7 +17,7 @@ $Arr_not_destoy_session = array('checker');
         }
 
 // Redirect to login page
-header("location: main.php");
+header("location: index.php");
 exit;
 ?>
 </body>

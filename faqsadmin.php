@@ -205,7 +205,7 @@ button[type="submit"]:hover {
     </form>
 
     <div class="created">
-      <p>Created by <a href="./main.php">CaringPaws</a></p>
+      <p>Created by <a href="./index.php">CaringPaws</a></p>
     </div>
   </div>
   <div class="background">

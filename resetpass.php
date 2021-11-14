@@ -4,7 +4,7 @@ session_start();
  
 // Check if the user is logged in, otherwise redirect to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: main.php");
+    header("location: index.php");
     exit;
 }
  
@@ -55,11 +55,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Password updated successfully. Destroy the session, and redirect to login page
       
                 $_SESSION["success7"] = "<div style='" . "margin-bottom: 100px; padding-bottom: 20px;" . "' class=\"alert alert-success\">Your password has been reset! Sign in now!</div>";
-                header("location: main.php");
+                header("location: index.php");
                 exit();
             } else{
                 $_SESSION["failed7"] = "<div style='" . "margin-bottom: 100px; padding-bottom: 20px;" . "' class=\"alert alert-success\">Oops! Something went wrong. Please try again later.</div>";
-                header("location: main.php");
+                header("location: index.php");
                 exit();
             }
 
@@ -255,7 +255,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     <div class="wrapper">
 
-        <a href="main.php"><img src="logo/logo.png" alt=""></a>
+        <a href="index.php"><img src="logo/logo.png" alt=""></a>
         <div style="padding-bottom: 20px;"></div>
         <h2 >Reset Password</h2>
         <p>Please fill out this form to reset your password.</p>
@@ -272,7 +272,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
             <center><div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
-                <a class="btn btn-link ml-2" href="main.php">Cancel</a>
+                <a class="btn btn-link ml-2" href="index.php">Cancel</a>
             </div><center>
         </form>
     </div>    

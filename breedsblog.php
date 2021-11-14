@@ -8,7 +8,7 @@ if (!isset($_SESSION)) {
   }
   // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-  header("location: main.php");
+  header("location: index.php");
   exit;
 }
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -28,7 +28,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
   //GET THE TITLE BRO
   $_GET['p2'] = 100;
-  $dataTitle5 = isset($_POST['dataTitle5']) ? $_POST['dataTitle5'] : header("Location: http://localhost/caringpaws/main.php" . $_SERVER['REDIRECT_URI'] . '?' . http_build_query($_GET)); 
+  $dataTitle5 = isset($_POST['dataTitle5']) ? $_POST['dataTitle5'] : header("Location: http://localhost/caringpaws/index.php" . $_SERVER['REDIRECT_URI'] . '?' . http_build_query($_GET)); 
   $_SESSION['theTitle5'] = $dataTitle5;
 
   
@@ -126,7 +126,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                       <!-- Logo -->
                       <div class="col-xl-2 col-lg-2 col-md-1">
                           <div class="logo">
-                              <a href="main.php"><img src="./logo/logo.png" alt=""></a>
+                              <a href="index.php"><img src="./logo/logo.png" alt=""></a>
                           </div>
                       </div>
                       <div class="col-xl-10 col-lg-10 col-md-10">
