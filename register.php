@@ -262,7 +262,7 @@ if(empty(trim($_POST["patientGender"]))){
 
 
             } else{
-                $_SESSION["failed6"] = "<div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-success\">Something went wrong. Please try again later.</div>";
+                $_SESSION["failed6"] = "<div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-warning\">Something went wrong. Please try again later.</div>";
                 header("location: index.php");
                 exit();
             }
