@@ -28,7 +28,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
   //GET THE TITLE BRO
   $_GET['p2'] = 100;
-  $dataTitle2 = isset($_POST['dataTitle2']) ? $_POST['dataTitle2'] : header("Location: http://localhost/caringpaws/index.php" . $_SERVER['REDIRECT_URI'] . '?' . http_build_query($_GET)); 
+  $dataTitle2 = isset($_POST['dataTitle2']) ? $_POST['dataTitle2'] : header("Location: https://caringpaws-ph.herokuapp.com/index.php" . $_SERVER['REDIRECT_URI'] . '?' . http_build_query($_GET)); 
   $_SESSION['theTitle2'] = $dataTitle2;
 
   $sql5 = "SELECT idBlogger, Behavior, Message FROM behavior WHERE Behavior='" . $_SESSION['theTitle2'] . "'";
