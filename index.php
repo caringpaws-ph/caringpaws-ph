@@ -576,8 +576,6 @@ table{
         <!--? Our Services Start -->
 
 
-
-
         <!-- Our Services End -->
         <!--? About Area Start-->
         <div class="about-area fix">
@@ -1003,7 +1001,7 @@ table{
         </div>-->
         <!-- Blog End -->
         <!--? contact-animal-owner Start -->
-        <div class="contact-animal-owner section-bg" data-background="assets/img/gallery/section_bg04.png">
+        <div class="contact-animal-owner section-bg" data-background="./assets/img/gallery/section_bg04.png">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
