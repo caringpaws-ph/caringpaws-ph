@@ -330,8 +330,7 @@ table{
         document.getElementById("").onbeforeunload = x;
     }
 </script>
-<script type="text/javascript" src="./js/showeduc.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -1435,6 +1434,7 @@ table{
 
     <!-- Your Chat Plugin code -->
     <div id="fb-customer-chat" class="fb-customerchat"></div>
-
+    <script type="text/javascript" src="./js/showeduc.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     </body>
 </html>
