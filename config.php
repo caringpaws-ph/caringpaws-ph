@@ -14,7 +14,7 @@ server with default setting (user 'root' with no password) */
 //define('DB_NAME', 'db_healthcare');
  
 /* Attempt to connect to MySQL database */
-$mysqli = new mysqli('remotemysql.com', 'UPc1x6hhWL', 'xaeSCnp1RQ', 'UPc1x6hhWL');
+$mysqli = new mysqli('remotemysql.com', 'UPc1x6hhWL', 'xaeSCnp1RQ', 'UPc1x6hhWL', '3306');
  
 // Check connection
 if($mysqli === false){

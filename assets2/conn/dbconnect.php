@@ -18,7 +18,7 @@ server with default setting (user 'root' with no password) */
 //define('DB_PASSWORD', 'xaeSCnp1RQ');
 //define('DB_NAME', 'UPc1x6hhWL');
 /* Attempt to connect to MySQL database */
-$con = new mysqli('remotemysql.com', 'UPc1x6hhWL', 'xaeSCnp1RQ', 'UPc1x6hhWL');
+$con = new mysqli('remotemysql.com', 'UPc1x6hhWL', 'xaeSCnp1RQ', 'UPc1x6hhWL', '3306');
  
 // Check connection
 if($con === false){
