@@ -1,4 +1,9 @@
 <?php 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'PHPMailer-master/src/Exception.php';
+require 'PHPMailer-master/src/PHPMailer.php';
+require 'PHPMailer-master/src/SMTP.php';
 session_start();						
 if(isset($_POST["send_message"])){
    						$fromname = $_POST["fullname"];
@@ -96,17 +101,33 @@ if(isset($_POST["send_message"])){
 	$headers .= "MIME-Version: 1.0" . "\r\n";
         $body = $message_body;
     }
+    
+    $mail = mail($to, $subject, $body, $headers);
+    
+    $mail = new PHPMailer();
 
-    $sentMail = mail($to, $subject, $body, $headers);
-    if($sentMail) //output success or failure messages
+    // Settings
+    $mail->IsSMTP();
+    $mail->CharSet = 'UTF-8';
+ 
+    $mail->Host       = "smtp.gmail.com";    // SMTP server example
+    $mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
+    $mail->SMTPAuth   = true;                  // enable SMTP authentication
+    $mail->Port       = 587;                    // set the SMTP port for the GMAIL server
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+    $mail->Username   = "caringpawsph@gmail.com";            // SMTP account username example
+    $mail->Password   = "vqxvwuivpewpiato";            // SMTP account password example
+
+    if(!$mail->send()) //output success or failure messages
     {   
-        $_SESSION["success"] = "Thank you for your question!\nWe will reply as soon as possible.";
-        header("location: index.php");   
+        $_SESSION["failed"] = "Could not send mail! Please try again."; 
+        header("location: index.php");
         exit;
         
     }else{
-        $_SESSION["failed"] = "Could not send mail! Please try again."; 
-        header("location: index.php");
+        $_SESSION["success"] = "Thank you for your question!\nWe will reply as soon as possible.";
+        header("location: index.php");   
+        var_dump($mail); 
         exit;
     }
 }
