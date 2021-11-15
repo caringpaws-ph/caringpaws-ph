@@ -102,8 +102,6 @@ if(isset($_POST["send_message"])){
         $body = $message_body;
     }
     
-    $mail = mail($to, $subject, $body, $headers);
-    
     $mail = new PHPMailer();
 
     // Settings
@@ -118,7 +116,7 @@ if(isset($_POST["send_message"])){
     $mail->Username   = "caringpawsph@gmail.com";            // SMTP account username example
     $mail->Password   = "vqxvwuivpewpiato";            // SMTP account password example
 
-    if(!$mail->send()) //output success or failure messages
+    if(!$mail->send($to, $subject, $body, $headers)) //output success or failure messages
     {   
         $_SESSION["failed"] = "Could not send mail! Please try again."; 
         header("location: index.php");
