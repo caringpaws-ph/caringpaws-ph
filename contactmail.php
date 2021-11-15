@@ -51,33 +51,17 @@ if($_POST) {
 	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
    ini_set("sendmail_from", $to); // for windows server
-
-   $mail = new PHPMailer();
-
-   // Settings
-   $mail->IsSMTP();
-   $mail->CharSet = 'UTF-8';
-
-   $mail->Host       = "smtp.gmail.com";    // SMTP server example
-   $mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
-   $mail->SMTPAuth   = true;                  // enable SMTP authentication
-   $mail->Port       = 587;                    // set the SMTP port for the GMAIL server
-   $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-   $mail->Username   = "caringpawsph@gmail.com";            // SMTP account username example
-   $mail->Password   = "vqxvwuivpewpiato";            // SMTP account password example
-
    $mail = mail($to, $subject2, $message, $headers);
 
-	if (!$mail->send()) { 
-        $_SESSION["failed2"] = "<div style='" . "margin: 80 80; margin-bottom: 100px;" . "' class=\"alert alert-danger\">Your message has been sent! Thank you!</div>"; 
-        header("location: contact.php");
-        var_dump($mail); 
+	if ($mail) { 
+        $_SESSION["success2"] = "<div style='" . "margin: 80 80; margin-bottom: 100px;" . "' class=\"alert alert-success\">Your message has been sent! Thank you!</div>";
+        header("location: contact.php");   
         exit;
   }
    else { 
-         $_SESSION["success2"] = "<div style='" . "margin: 80 80; margin-bottom: 100px;" . "' class=\"alert alert-success\">Your message has been sent! Thank you!</div>";
-         header("location: contact.php");  
-         exit; 
+        $_SESSION["failed2"] = "<div style='" . "margin: 80 80; margin-bottom: 100px;" . "' class=\"alert alert-danger\">Your message has been sent! Thank you!</div>"; 
+        header("location: contact.php");
+        exit; 
   }
  }
 }
