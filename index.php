@@ -1418,7 +1418,7 @@ table{
     <script src="./assets/js/plugins.js"></script>
     <script src="./assets/js/main.js"></script>
     
-    <script src="./js/fbc.js"></script>
+    
     <script type="text/javascript" src="./js/showeduc.js"></script>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -1436,6 +1436,27 @@ table{
 
     <!-- Your Chat Plugin code -->
     <div id="fb-customer-chat" class="fb-customerchat"></div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "100419709047028");
+        chatbox.setAttribute("attribution", "biz_inbox");
+
+        window.fbAsyncInit = function() {
+        FB.init({
+            xfbml            : true,
+            version          : 'v11.0'
+        });
+        };
+
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+</script>
 
     
 </body>
