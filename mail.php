@@ -71,7 +71,7 @@ if(isset($_POST["send_message"])){
                 $body .="Content-Disposition: attachment; filename=".$file_name."\r\n";
                 $body .="Content-Transfer-Encoding: base64\r\n";
                 $body .="X-Attachment-Id: ".rand(1000,99999)."\r\n\r\n"; 
-                $body .= $encoded_content; 
+                $mail->addAttachment($encoded_content); 
             }
         }
 
@@ -80,9 +80,7 @@ if(isset($_POST["send_message"])){
 	$headers  = $fromemail;
     $body = $message_body;
 
-    }
-    
-    
+    } 
 
     // Settings
     $mail->SMTPDebug  = 1;                     // enables SMTP debug information (for testing)
