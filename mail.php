@@ -92,36 +92,29 @@ if(isset($_POST["send_message"])){
 	// FULL HEADER
 	$headers  = "From: ".$fromname . "\r\n";
 	$headers .= "Reply-To: ".$fromemail . "\r\n";
-	// $headers .= "To: Mary <mary@example.com>, Kelly <kelly@example.com>" . "\r\n";
-	// $headers .= "Cc: sendacopy@here.com" . "\r\n";
-	// $headers .= "Bcc: sendablindcopy@here.com" . "\r\n";
-	// $headers .= "X-Sender: testsite < mail@testsite.com >" . "\r\n";
-	// $headers .= "Return-Path: " . $fromFull . "\r\n";
-	// $headers .= "Content-Type: text/html; charset=ISO-8859-1" . "\r\n";
 	$headers .= "X-Priority: 1" . "\r\n";
 	$headers .= "MIME-Version: 1.0" . "\r\n";
-        $body = $message_body;
+    $body = $message_body;
+
     }
     
     $mail = new PHPMailer();
 
     // Settings
+    $mail->SMTPDebug  = 1;                     // enables SMTP debug information (for testing)
     $mail->IsSMTP();
-    $mail->CharSet = 'UTF-8';
- 
     $mail->Host       = "smtp.gmail.com";    // SMTP server example
-    $mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
     $mail->SMTPAuth   = true;                  // enable SMTP authentication
     $mail->Port       = 587;                    // set the SMTP port for the GMAIL server
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Username   = "caringpawsph@gmail.com";            // SMTP account username example
     $mail->Password   = "vqxvwuivpewpiato";            // SMTP account password example
 
-    $mail->setFrom($headers);
-    $mail->addAddress($to);
+    $mail->setFrom(" . "$headers" . ");
+    $mail->addAddress(" . "$to" . ");
     $mail->isHTML(true);
-    $mail->Subject($subject);
-    $mail->Body($body);
+    $mail->Subject(" . "$subject" . ");
+    $mail->Body(" . "$body" . ");
 
     if(!$mail->send()) //output success or failure messages
     {   
