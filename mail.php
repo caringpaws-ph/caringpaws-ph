@@ -5,9 +5,8 @@ session_start();
 if(isset($_POST["send_message"])){
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
-    require 'phpmailer/src/Exception.php';
-    require 'phpmailer/src/PHPMailer.php';
-    require 'phpmailer/src/SMTP.php';
+
+    require 'phpmailer/vendor/autoload.php';
 
    	$fromname = $_POST["fullname"];
     $fromemail = $_POST["email"];
@@ -95,7 +94,7 @@ if(isset($_POST["send_message"])){
 
     }
     
-    $mail = new PHPMailer();
+    $mail = new PHPMailer(true);
 
     // Settings
     $mail->SMTPDebug  = 1;                     // enables SMTP debug information (for testing)
@@ -107,11 +106,11 @@ if(isset($_POST["send_message"])){
     $mail->Username   = "caringpawsph@gmail.com";            // SMTP account username example
     $mail->Password   = "vqxvwuivpewpiato";            // SMTP account password example
 
-    $mail->setFrom('$headers');
-    $mail->addAddress('$to');
+    $mail->setFrom($headers);
+    $mail->addAddress($to);
     $mail->isHTML(true);
-    $mail->Subject('$subject');
-    $mail->Body('$body');
+    $mail->Subject($subject);
+    $mail->Body($body);
 
     if(!$mail->send()) //output success or failure messages
     {   
