@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\Exception;
 require 'phpmailer/vendor/autoload.php';
 
 session_start();	
-					
+
 if(isset($_POST["send_message"])){
 
    	$fromname = $_POST["fullname"];
@@ -92,7 +92,7 @@ if(isset($_POST["send_message"])){
     $mail->SMTPAuth   = true;                  // enable SMTP authentication
     $mail->Port       = 465;                    // set the SMTP port for the GMAIL server
     $mail->Username   = "caringpawsph@gmail.com";            // SMTP account username example
-    $mail->Password   = "vqxvwuivpewpiato";            // SMTP account password example
+    $mail->Password   = "mllklcxbnmknezvm";            // SMTP account password example
 
     $mail->setFrom($headers);
     $mail->addAddress($to);
