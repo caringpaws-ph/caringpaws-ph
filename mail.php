@@ -34,6 +34,7 @@ if(isset($_POST["send_message"])){
         $headers = $fromemail;
 
         //message text
+        $body = "--$boundary\r\n";
         $body .= "Content-Type: text/plain; charset=ISO-8859-1\r\n";
         $body .= "Content-Transfer-Encoding: base64\r\n\r\n"; 
         $body .= chunk_split(base64_encode($message_body)); 
@@ -54,22 +55,8 @@ if(isset($_POST["send_message"])){
                     exit;
                 }
                 
-                //get file info
-                $file_name = $attachments['name'][$x];
-                $file_size = $attachments['size'][$x];
-                $file_type = $attachments['type'][$x];
-                
-                //read file 
-                $handle = fopen($attachments['tmp_name'][$x], "r");
-                $content = fread($handle, $file_size);
-                fclose($handle);
-                $encoded_content = chunk_split(base64_encode($content)); //split into smaller chunks (RFC 2045)
-                
-                $body .="Content-Type: $file_type; name=".$file_name."\r\n";
-                $body .="Content-Disposition: attachment; filename=".$file_name."\r\n";
-                $body .="Content-Transfer-Encoding: base64\r\n";
-                $body .="X-Attachment-Id: ".rand(1000,99999)."\r\n\r\n"; 
-                 
+                $encoded_content = $attachments
+
             }
         }
 
@@ -94,7 +81,6 @@ if(isset($_POST["send_message"])){
     $mail->addAddress($to);
 
     $mail->addAttachment($encoded_content);
-    
     $mail->isHTML(true);
     $mail->Subject = $subject;
     $mail->Body = $body;
