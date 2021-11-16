@@ -1697,10 +1697,7 @@ class PHPMailer
         //Sendmail docs: http://www.sendmail.org/~ca/email/man/sendmail.html
         //Qmail docs: http://www.qmail.org/man/man8/qmail-inject.html
         //Example problem: https://www.drupal.org/node/1057954
-
-        //PHP 5.6 workaround
-        $sendmail_from_value = ini_get('sendmail_from');
-        if (empty($this->Sender) && !empty($sendmail_from_value)) {
+        if (empty($this->Sender) && !empty(ini_get('sendmail_from'))) {
             //PHP config has a sender address we can use
             $this->Sender = ini_get('sendmail_from');
         }
@@ -1882,10 +1879,7 @@ class PHPMailer
         //Qmail docs: http://www.qmail.org/man/man8/qmail-inject.html
         //Example problem: https://www.drupal.org/node/1057954
         //CVE-2016-10033, CVE-2016-10045: Don't pass -f if characters will be escaped.
-
-        //PHP 5.6 workaround
-        $sendmail_from_value = ini_get('sendmail_from');
-        if (empty($this->Sender) && !empty($sendmail_from_value)) {
+        if (empty($this->Sender) && !empty(ini_get('sendmail_from'))) {
             //PHP config has a sender address we can use
             $this->Sender = ini_get('sendmail_from');
         }
@@ -2202,7 +2196,7 @@ class PHPMailer
      * @param string $langcode  ISO 639-1 2-character language code (e.g. French is "fr")
      *                          Optionally, the language code can be enhanced with a 4-character
      *                          script annotation and/or a 2-character country annotation.
-     * @param string $lang_path Path to the language file directory, with trailing separator (slash)
+     * @param string $lang_path Path to the language file directory, with trailing separator (slash).D
      *                          Do not set this from user input!
      *
      * @return bool Returns true if the requested language was loaded, false otherwise.
