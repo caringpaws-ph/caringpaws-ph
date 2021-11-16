@@ -4,9 +4,10 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'phpmailer/vendor/autoload.php';
 
-session_start();						
+session_start();	
+					
 if(isset($_POST["send_message"])){
-    
+
    	$fromname = $_POST["fullname"];
     $fromemail = $_POST["email"];
     $to = 'caringpawsph@gmail.com';
