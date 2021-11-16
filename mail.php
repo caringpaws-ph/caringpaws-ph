@@ -1,20 +1,20 @@
 <?php 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
+require 'phpmailer/vendor/autoload.php';
 
 session_start();						
 if(isset($_POST["send_message"])){
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
-
-    require 'phpmailer/vendor/autoload.php';
-
+    
    	$fromname = $_POST["fullname"];
     $fromemail = $_POST["email"];
     $to = 'caringpawsph@gmail.com';
     $subject = $_POST["subject"];
     $message = $_POST["message"];
 
-    $subject        = filter_var($_POST["subject"], FILTER_SANITIZE_STRING);
+    $mail = new PHPMailer(true);
+    
 	//$mgs = "".$message;
 	//$message        = filter_var($mgs, FILTER_SANITIZE_STRING); //capture message
 
@@ -30,20 +30,8 @@ if(isset($_POST["send_message"])){
     
     if($file_count > 0){ //if attachment exists
         //header
-        $headers = "MIME-Version: 1.0\r\n";
-        $headers  = "From: ".$fromname . "\r\n";
-        $headers .= "Reply-To: ".$fromemail . "\r\n";
-    	// $headers .= "To: Mary <mary@example.com>, Kelly <kelly@example.com>" . "\r\n";
-		// $headers .= "Cc: sendacopy@here.com" . "\r\n";
-		// $headers .= "Bcc: sendablindcopy@here.com" . "\r\n";
-		// $headers .= "X-Sender: testsite < mail@testsite.com >" . "\r\n";
-		// $headers .= "Return-Path: " . $fromFull . "\r\n";
-		// $headers .= "Content-Type: text/html; charset=ISO-8859-1" . "\r\n";
-	    $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
-	    $headers .= "X-Priority: 1" . "\r\n";
-	
-        $headers .= "Content-Type: multipart/mixed; boundary = $boundary\r\n\r\n"; 
-        
+        $headers = $fromemail;
+
         //message text
         $body = "--$boundary\r\n";
         $body .= "Content-Type: text/plain; charset=ISO-8859-1\r\n";
@@ -66,7 +54,6 @@ if(isset($_POST["send_message"])){
                     exit;
                 }
                 
-
                 //get file info
                 $file_name = $attachments['name'][$x];
                 $file_size = $attachments['size'][$x];
@@ -89,28 +76,28 @@ if(isset($_POST["send_message"])){
 
     }else{ //send plain email otherwise
 	// FULL HEADER
-	$headers  = $fromname;
+	$headers  = $fromemail;
     $body = $message_body;
 
     }
     
-    $mail = new PHPMailer(true);
+    
 
     // Settings
     $mail->SMTPDebug  = 1;                     // enables SMTP debug information (for testing)
+    $mail->SMTPSecure = 'ssl';
     $mail->IsSMTP();
     $mail->Host       = "smtp.gmail.com";    // SMTP server example
     $mail->SMTPAuth   = true;                  // enable SMTP authentication
-    $mail->Port       = 587;                    // set the SMTP port for the GMAIL server
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+    $mail->Port       = 465;                    // set the SMTP port for the GMAIL server
     $mail->Username   = "caringpawsph@gmail.com";            // SMTP account username example
     $mail->Password   = "vqxvwuivpewpiato";            // SMTP account password example
 
     $mail->setFrom($headers);
     $mail->addAddress($to);
     $mail->isHTML(true);
-    $mail->Subject($subject);
-    $mail->Body($body);
+    $mail->Subject = $subject;
+    $mail->Body = $body;
 
     if(!$mail->send()) //output success or failure messages
     {   
