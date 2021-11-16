@@ -90,10 +90,7 @@ if(isset($_POST["send_message"])){
 
     }else{ //send plain email otherwise
 	// FULL HEADER
-	$headers  = "From: ".$fromname . "\r\n";
-	$headers .= "Reply-To: ".$fromemail . "\r\n";
-	$headers .= "X-Priority: 1" . "\r\n";
-	$headers .= "MIME-Version: 1.0" . "\r\n";
+	$headers  = $fromname;
     $body = $message_body;
 
     }
@@ -110,11 +107,11 @@ if(isset($_POST["send_message"])){
     $mail->Username   = "caringpawsph@gmail.com";            // SMTP account username example
     $mail->Password   = "vqxvwuivpewpiato";            // SMTP account password example
 
-    $mail->setFrom(" . "$headers" . ");
-    $mail->addAddress(" . "$to" . ");
+    $mail->setFrom($headers);
+    $mail->addAddress($to);
     $mail->isHTML(true);
-    $mail->Subject(" . "$subject" . ");
-    $mail->Body(" . "$body" . ");
+    $mail->Subject($subject);
+    $mail->Body($body);
 
     if(!$mail->send()) //output success or failure messages
     {   
