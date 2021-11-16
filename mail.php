@@ -1,18 +1,19 @@
 <?php 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-require 'phpmailer/src/Exception.php';
-require 'phpmailer/src/PHPMailer.php';
-require 'phpmailer/src/SMTP.php';
+
 
 session_start();						
 if(isset($_POST["send_message"])){
-   						$fromname = $_POST["fullname"];
-                        $fromemail = $_POST["email"];
-                        $to = 'caringpawsph@gmail.com';
-                        $subject = $_POST["subject"];
-                        $message = $_POST["message"];
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    require 'phpmailer/src/Exception.php';
+    require 'phpmailer/src/PHPMailer.php';
+    require 'phpmailer/src/SMTP.php';
 
+   	$fromname = $_POST["fullname"];
+    $fromemail = $_POST["email"];
+    $to = 'caringpawsph@gmail.com';
+    $subject = $_POST["subject"];
+    $message = $_POST["message"];
 
     $subject        = filter_var($_POST["subject"], FILTER_SANITIZE_STRING);
 	//$mgs = "".$message;
@@ -97,7 +98,6 @@ if(isset($_POST["send_message"])){
 	// $headers .= "X-Sender: testsite < mail@testsite.com >" . "\r\n";
 	// $headers .= "Return-Path: " . $fromFull . "\r\n";
 	// $headers .= "Content-Type: text/html; charset=ISO-8859-1" . "\r\n";
-	$headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 	$headers .= "X-Priority: 1" . "\r\n";
 	$headers .= "MIME-Version: 1.0" . "\r\n";
         $body = $message_body;
@@ -117,7 +117,13 @@ if(isset($_POST["send_message"])){
     $mail->Username   = "caringpawsph@gmail.com";            // SMTP account username example
     $mail->Password   = "vqxvwuivpewpiato";            // SMTP account password example
 
-    if(!$mail->send($to, $subject, $body, $headers)) //output success or failure messages
+    $mail->setFrom($headers);
+    $mail->addAddress($to);
+    $mail->isHTML(true);
+    $mail->Subject($subject);
+    $mail->Body($body);
+
+    if(!$mail->send()) //output success or failure messages
     {   
         $_SESSION["failed"] = "Could not send mail! Please try again."; 
         header("location: index.php");
