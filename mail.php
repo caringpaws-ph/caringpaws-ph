@@ -34,7 +34,6 @@ if(isset($_POST["send_message"])){
         $headers = $fromemail;
 
         //message text
-        $body = "--$boundary\r\n";
         $body .= "Content-Type: text/plain; charset=ISO-8859-1\r\n";
         $body .= "Content-Transfer-Encoding: base64\r\n\r\n"; 
         $body .= chunk_split(base64_encode($message_body)); 
@@ -66,7 +65,6 @@ if(isset($_POST["send_message"])){
                 fclose($handle);
                 $encoded_content = chunk_split(base64_encode($content)); //split into smaller chunks (RFC 2045)
                 
-                $body .= "--$boundary\r\n";
                 $body .="Content-Type: $file_type; name=".$file_name."\r\n";
                 $body .="Content-Disposition: attachment; filename=".$file_name."\r\n";
                 $body .="Content-Transfer-Encoding: base64\r\n";
