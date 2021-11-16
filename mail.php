@@ -107,11 +107,11 @@ if(isset($_POST["send_message"])){
     $mail->Username   = "caringpawsph@gmail.com";            // SMTP account username example
     $mail->Password   = "vqxvwuivpewpiato";            // SMTP account password example
 
-    $mail->setFrom($headers);
-    $mail->addAddress($to);
+    $mail->setFrom('$headers');
+    $mail->addAddress('$to');
     $mail->isHTML(true);
-    $mail->Subject($subject);
-    $mail->Body($body);
+    $mail->Subject('$subject');
+    $mail->Body('$body');
 
     if(!$mail->send()) //output success or failure messages
     {   
