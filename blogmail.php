@@ -1,5 +1,9 @@
 <link rel="icon" href="pagelogo.png" sizes="16x16" type="image/png">
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'phpmailer/vendor/autoload.php';
 session_start();
 
 if (isset($_POST['submit'])) {
@@ -22,39 +26,41 @@ if($_POST) {
    $subject2 = '';
    $contact_message2 = trim(stripslashes($_POST['message2']));
 
-   
-	if ($subject2 == '') { 
-        $subject2 = "Asked by " . $name2 . " "; 
-    }
+    $mail = new PHPMailer(true);
+    ## SEND MESSGAE ##
+    
+     // Settings
+     $mail->SMTPDebug  = 1;    // enables SMTP debug information (for testing)
+     $mail->SMTPAuth   = true;                  // enable SMTP authentication
+     $mail->SMTPSecure = 'ssl';
+     $mail->Host       = "smtp.gmail.com";    // SMTP server example
+     $mail->Port       = 465;                    // set the SMTP port for the GMAIL server
+     
+     $mail->IsSMTP();
+     
+     $mail->Username   = "lawrs.rds@gmail.com";            // SMTP account username example
+     $mail->Password   = "pbokmttytvoxhter";            // SMTP account password example
 
-   // Set Message
-   $message = "Email from: " . $name2 . "<br />";
-   $message .= "Email address: " . $email2 . "<br />";
-   $message .= "Message: <br />";
-   $message .= nl2br($contact_message2);
-   $message .= "<br /> ----- <br /> This email was sent from " . url() . " Copyright @ 2021 Caring Paws . <br />";
+      if ($subject2 == '') { 
+            $mail->setFrom($email2, 'Asked by ' . $name2);
+      }
+     
+     $mail->addAddress($to);
+     $mail->isHTML(true);
 
-   // Set From: header
-   $from =  $name2 . " <" . $email2 . ">";
+   $mail->Subject = $subject2;
+   $mail->Body = $contact_message2;
 
-   // Email Headers
-	$headers = "From: " . $from . "\r\n";
-	$headers .= "Reply-To: ". $email2 . "\r\n";
- 	$headers .= "MIME-Version: 1.0\r\n";
-	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-   ini_set("sendmail_from", $to); // for windows server
-   $mail = mail($to, $subject2, $message, $headers);
-
-	if ($mail) { 
-        $_SESSION["success2"] = "<center><div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-success\">Your message has been sent! Thank you!</div><center>";
-        header("location: index.php");   
-        exit;
-  }
-   else { 
-        $_SESSION["failed2"] = "<center><div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-danger\">Your message has not been sent! Please try again!</div><center>"; 
-        header("location: index.php");
-        exit; 
+  if(!$mail->send()) //output success or failure messages
+  {   
+   $_SESSION["failed2"] = "<center><div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-danger\">Your message has not been sent! Please try again!</div><center>"; 
+   header("location: main.php");
+   exit; 
+ 
+  }else{
+   $_SESSION["success2"] = "<center><div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-success\">Your message has been sent! Thank you!</div><center>";
+   header("location: main.php");   
+   exit;
   }
  }
 }

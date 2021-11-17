@@ -1,5 +1,10 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'phpmailer/vendor/autoload.php';
 session_start();
+
 if (isset($_POST['subscribe'])) {
 ## CONFIG ##
 
@@ -19,19 +24,40 @@ $sender = trim(stripslashes($_POST['email3']));
 $body = "Email: ".$_POST['email3']." \n";
 # add more fields here if required
 
+$mail = new PHPMailer(true);
 ## SEND MESSGAE ##
 
-$mail2 = mail( $recipient, $subject, $body, "From: $sender" ) or die ("Mail could not be sent.");
+ // Settings
+ $mail->SMTPDebug  = 1;    // enables SMTP debug information (for testing)
+ $mail->SMTPAuth   = true;                  // enable SMTP authentication
+ $mail->SMTPSecure = 'ssl';
+ $mail->Host       = "smtp.gmail.com";    // SMTP server example
+ $mail->Port       = 465;                    // set the SMTP port for the GMAIL server
+ 
+ $mail->IsSMTP();
+ 
+ $mail->Username   = "lawrs.rds@gmail.com";            // SMTP account username example
+ $mail->Password   = "pbokmttytvoxhter";            // SMTP account password example
 
-if ($mail2) { 
-    $_SESSION["success2"] = "<center><div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-success\">You are now subscribed, Thank you!</div><center>";
-    header("location: index.php");   
-    exit;
- }
-  else { 
-    $_SESSION["failed2"] = "<center><div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-danger\">Something went wrong. Please try again.</div><center>"; 
-    header("location: index.php");
-    exit; 
+ $mail->setFrom($sender, 'Newsletter Subscriber');
+ $mail->addAddress($recipient);
+ 
+ $mail->isHTML(true);
+ 
+ $mail->Subject = $subject;
+ $mail->Body = $body;
+
+ if(!$mail->send()) //output success or failure messages
+ {   
+   $_SESSION["failed2"] = "<center><div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-danger\">Something went wrong. Please try again.</div><center>"; 
+   header("location: main.php");
+   exit;
+
+ }else{
+   $_SESSION["success2"] = "<center><div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-success\">You are now subscribed, Thank you!</div><center>";
+   header("location: main.php");   
+   exit;
  }
 }
+
 ?>

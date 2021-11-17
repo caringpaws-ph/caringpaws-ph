@@ -20,29 +20,42 @@ if(isset($_POST["send_message"])){
 	//$message        = filter_var($mgs, FILTER_SANITIZE_STRING); //capture message
 
     $attachments = $_FILES['my_files'];
-    
     $file_count = count($attachments['name']); //count total files attached
     $boundary = md5(""); 
     
     //construct a message body to be sent to recipient
     //$message_body =  "------------------------------\n";
+
     $message_body =  "$message\n";
 
-    
-    if($file_count > 0){ //if attachment exists
-        //header
-        $headers = $fromemail;
 
-        //message text
-        $body = "--$boundary\r\n";
-        $body .= "Content-Type: text/plain; charset=ISO-8859-1\r\n";
-        $body .= "Content-Transfer-Encoding: base64\r\n\r\n"; 
-        $body .= chunk_split(base64_encode($message_body)); 
+    if($file_count > 0){ //if attachment exists
+
+        // Settings
+        $mail->SMTPDebug  = 0;    // enables SMTP debug information (for testing)
+        $mail->SMTPAuth   = true;                  // enable SMTP authentication
+        $mail->SMTPSecure = 'ssl';
+        $mail->Host       = "smtp.gmail.com";    // SMTP server example
+        $mail->Port       = 465;                    // set the SMTP port for the GMAIL server
+        
+        $mail->IsSMTP();
+        
+        $mail->Username   = "lawrs.rds@gmail.com";            // SMTP account username example
+        $mail->Password   = "pbokmttytvoxhter";            // SMTP account password example
+        
+        //header
+        $body = $message_body;
+
+        $mail->setFrom($fromemail, 'Ask A Vet Question');
+        $mail->addAddress($to);
+        $mail->addReplyTo($fromemail, $fromname);
+
+        $mail->isHTML(true);
 
         //attachments
         for ($x = 0; $x < $file_count; $x++){       
             if(!empty($attachments['name'][$x])){
-                
+
                 if($attachments['error'][$x]>0) //exit script and output error if we encounter any
                 {
                     $mymsg = array( 
@@ -55,46 +68,69 @@ if(isset($_POST["send_message"])){
                     exit;
                 }
                 
-                $encoded_content = $attachments
+                //get file info
+                $file_name = $attachments['name'][$x];
+                $file_name2 = $attachments['tmp_name'][$x];
 
+                $mail->AddAttachment($file_name2, $file_name);
+                
+                $mail->isHTML(true);       
+                $mail->Subject = $subject;
+                $mail->Body = $body;
+                
+
+                if(!$mail->send()) //output success or failure messages
+                {   
+                    $_SESSION["failed"] = "Could not send mail! Please try again."; 
+                    header("location: main.php");
+                    exit;
+                    
+                }else{
+                    $_SESSION["success"] = "Thank you for your question!\nWe will reply as soon as possible.";
+                    header("location: main.php");   
+                    exit;
+                }
+                
             }
         }
+        
 
     }else{ //send plain email otherwise
 	// FULL HEADER
-	$headers  = $fromemail;
     $body = $message_body;
 
     } 
 
     // Settings
-    $mail->SMTPDebug  = 1;                     // enables SMTP debug information (for testing)
-    $mail->SMTPSecure = 'ssl';
-    $mail->IsSMTP();
-    $mail->Host       = "smtp.gmail.com";    // SMTP server example
+    $mail->SMTPDebug  = 1;    // enables SMTP debug information (for testing)
     $mail->SMTPAuth   = true;                  // enable SMTP authentication
+    $mail->SMTPSecure = 'ssl';
+    $mail->Host       = "smtp.gmail.com";    // SMTP server example
     $mail->Port       = 465;                    // set the SMTP port for the GMAIL server
-    $mail->Username   = "caringpawsph@gmail.com";            // SMTP account username example
-    $mail->Password   = "mllklcxbnmknezvm";            // SMTP account password example
+    
+    $mail->IsSMTP();
+    
+    $mail->Username   = "lawrs.rds@gmail.com";            // SMTP account username example
+    $mail->Password   = "pbokmttytvoxhter";            // SMTP account password example
 
-    $mail->setFrom($headers);
+    $mail->setFrom($fromemail, 'Ask A Vet Question');
     $mail->addAddress($to);
-
-    $mail->addAttachment($encoded_content);
+    $mail->addReplyTo($fromemail, $fromname);
+    
     $mail->isHTML(true);
+    
     $mail->Subject = $subject;
     $mail->Body = $body;
 
     if(!$mail->send()) //output success or failure messages
     {   
         $_SESSION["failed"] = "Could not send mail! Please try again."; 
-        header("location: index.php");
+        header("location: main.php");
         exit;
         
     }else{
         $_SESSION["success"] = "Thank you for your question!\nWe will reply as soon as possible.";
-        header("location: index.php");   
-        var_dump($mail); 
+        header("location: main.php");   
         exit;
     }
 }
