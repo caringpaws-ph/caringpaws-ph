@@ -23,7 +23,7 @@ if($_POST) {
 
    $name2 = trim(stripslashes($_POST['name2']));
    $email2 = trim(stripslashes($_POST['email2']));
-   $subject2 = 'From Education Center';
+   $subject2 = '';
    $contact_message2 = trim(stripslashes($_POST['message2']));
 
     $mail = new PHPMailer(true);
