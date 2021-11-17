@@ -50,12 +50,12 @@ $mail = new PHPMailer(true);
  if(!$mail->send()) //output success or failure messages
  {   
    $_SESSION["failed2"] = "<center><div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-danger\">Something went wrong. Please try again.</div><center>"; 
-   header("location: main.php");
+   header("location: index.php");
    exit;
 
  }else{
    $_SESSION["success2"] = "<center><div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-success\">You are now subscribed, Thank you!</div><center>";
-   header("location: main.php");   
+   header("location: index.php");   
    exit;
  }
 }

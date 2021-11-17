@@ -54,12 +54,12 @@ if($_POST) {
   if(!$mail->send()) //output success or failure messages
   {   
    $_SESSION["failed2"] = "<center><div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-danger\">Your message has not been sent! Please try again!</div><center>"; 
-   header("location: main.php");
+   header("location: index.php");
    exit; 
  
   }else{
    $_SESSION["success2"] = "<center><div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-success\">Your message has been sent! Thank you!</div><center>";
-   header("location: main.php");   
+   header("location: index.php");   
    exit;
   }
  }
