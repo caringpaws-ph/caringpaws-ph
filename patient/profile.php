@@ -681,7 +681,7 @@ $pfemale2="";
 						<tr class="headingTr"><td>Pet Name</td>
 						<td>Breed</td><td>Sex</td><td>Age</td><td>Date of Birth</td><td>Height</td><td>Weight</td><td>Photo</td><tr>
 							<?php
-                            $connnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6451028", "UssyZb8LGc", "sql6451028");
+                            $connnn = mysqli_connect("localhost", "root", "", "db_healthcare");
                             if ($connnn-> connect_error) {
                                 die ("Connection failed:" . $connnn-> connect_error);
                             }
@@ -762,90 +762,10 @@ $pfemale2="";
 
 											<table class="table table-user-information">
 												<tbody id="disdetails">
-												<tr><td></td><td style="padding-right: 165px;">
-												<?php if (!empty($msg)): ?>
-														<div class="alert <?php echo $msg_class ?>" role="alert">
-												<?php echo $msg; ?>
-														</div>
-												<?php endif; ?>
+									
 													
-													<div class="form-group text-center" style="position: relative;" >
-												
-														<span class="img-div">
-															
-															<div class="text-center img-placeholder"  onClick="triggerClick2()">
-																<h4 style="font-weight: bold;">Update Pet Image</h4>
-															</div>		
-														
-													
-
-														<img src="<?php if(empty($petRow['profile_image'])){
-																				echo 'images2/petDefault.png';
-																			}
-																		else{
-																				echo 'images2/' . $petRow['profile_image'];
-																			};
-																  ?>" style="width: 150px; height: 150px;" onClick="triggerClick2()" id="petDisplay">
-														</span>	
-														
-														<input class="form-control" type="file" name="petImage" onChange="displayImage2(this)" id="petImage" style="display: none;">
-
-													</div>
-												</td>
-												</tr>
-													<tr>
-														<td style="font-weight: bold;">Breed</td>
-														<td><input type="text" class="form-control" name="Breed" value="<?php //echo $rows22['Breed']; ?>"  /></td>
-													</tr>
-													<tr>
-														<td style="font-weight: bold;">Sex</td>
-														<td>
-															<div class="radio">
-																<label><input type="radio" name="petSex" value="Male" <?php //echo $rows22['Sex']; ?>>Male</label>
-															</div>
-															<div class="radio">
-																<label><input type="radio" name="petSex" value="Female" <?php //echo $rows22['Sex']; ?>>Female</label>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td style="font-weight: bold;">Age</td>
-														<td><input type="text" class="form-control" name="Age" value="<?php //echo $rows22['Age']; ?>"  /></td>
-													</tr>
-													<tr>
-														<td style="font-weight: bold;">Date of Birth</td>
-														<!-- <td><input type="text" class="form-control" name="patientDOB" value="<?php // echo $rows22['Date of Birth']; ?>"  /></td> -->
-														<td>
-															<div class="form-group ">
-																
-																<div class="input-group">
-																	<div class="input-group-addon">
-																		<i class="fa fa-calendar">
-																		</i>
-																	</div>
-																	<input class="form-control" id="petDOB" name="petDOB" placeholder="YYYY/MM/DD" type="Date" value="<?php //echo $rows22['DateofBirth']; ?>"/>
-																</div>
-															</div>
-														</td>
-														
-													</tr>
-													<tr>
-														<td style="font-weight: bold;">Height</td>
-														<td><input type="text" class="form-control" name="Height" value="<?php ///echo $rows22['Height']; ?>"  /></td>
-													</tr>
-													<tr>
-														<td style="font-weight: bold;">Weight</td>
-														<td><input type="text" class="form-control" name="Weight" value="<?php //echo $rows22['Weight']; ?>"  /></td>
-													</tr>							
-													<tr>
-														<td><input  type="submit" name="submit10" class="btn btn-info" value="Update"></td>
-													
-													
-													</tr>
-													
-													</tbody >
-													
-												</table>
+												</tbody >	
+											</table>
 																	
 												
 											</form>
@@ -937,10 +857,10 @@ $pfemale2="";
 															</div>
 														</td>
 													</tr>
-													<tr>
-														<td style="font-weight: bold;">Age</td>
-														<td><input type="text" class="form-control" name="AgeReg" value="<?php //echo $petRow['Age']; ?>"  /></td>
-													</tr>
+														<tr>
+															<td style="font-weight: bold;">Age</td>
+															<td id="agecompute"><input type="text" class="form-control" name="AgeReg" disabled value=""/></td>
+														</tr>
 													<tr>
 														<td style="font-weight: bold;">Date of Birth</td>
 														<!-- <td><input type="text" class="form-control" name="patientDOB" value="<?php //echo $petRow['Date of Birth']; ?>"  /></td> -->
@@ -952,7 +872,7 @@ $pfemale2="";
 																		<i class="fa fa-calendar">
 																		</i>
 																	</div>
-																	<input class="form-control" id="petDOBReg" name="petDOBReg" placeholder="YYYY/MM/DD" type="date" value="<?php //echo $petRow['DateofBirth']; ?>"/>
+																	<input class="form-control" id="pDOBr" name="petDOBReg" placeholder="YYYY/MM/DD" type="date" value="<?php //echo $petRow['DateofBirth']; ?>"/>
 																</div>
 															</div>
 														</td>
@@ -995,7 +915,6 @@ $pfemale2="";
 			</div>
 			<!-- CONATINER END -->
 
-
 <br>
 <br>
 <br>
@@ -1007,8 +926,25 @@ $pfemale2="";
 <br>
 
 			<script src="assets/js/jquery.js"></script>
-			<script src="assets/js/bootstrap.min.js"></script>
+			<script src="assets/js/bootstrap.min.js"></script>		
 			
+		<script>
+			var x = document.getElementById("pDOBr");
+			
+			x.onchange = function(){
+				var birthdate = this.value;	//alert(birthdate);
+
+				$.ajax({
+					url:"https://caringpaws-ph.herokuapp.com/patient/showAge.php",
+					method: "POST",
+					data:{ birthdate : birthdate },
+					success:function(data){
+						$("#agecompute").html(data);
+					}
+				})
+			}
+		</script>
+
 			<script>
 				function triggerClick(e) {
     				document.querySelector('#profileImage').click();
@@ -1058,5 +994,6 @@ $pfemale2="";
 			
 
 </script>
+<!--<iframe name="frame"></iframe>-->
 		</body>
 	</html>

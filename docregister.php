@@ -2,34 +2,34 @@
 <?php
 session_start();	
 // Include config file
-require_once "config.php";
+include_once 'assets2/conn/dbconnect.php';
  
 // Define variables and initialize with empty values
-$fname = $lname = $username = $password = $confirm_password = $icPatient = $month = $day = $year = $petGender = $petDOB = $patientDOB = "";
-$fname_err = $lname_err = $username_err = $password_err = $confirm_password_err = $icPatient_err = $patientDOB_err = $petGender_err = "";
+$DocFN = $DocLN = $DocID = $password = $confirm_password = $DocAddress = $docContact = $doctorDOB = $docEmail = "";
+$DocFN_err = $DocLN_err = $DocID_err = $password_err = $confirm_password_err = $DocAddress_err = $docContact_err = $doctorDOB_err = $docEmail_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     // Validate firstname
-    if(empty(trim($_POST["fname"]))){
-      $fname_err = "Please enter first name.";
+    if(empty(trim($_POST["docFN"]))){
+      $DocFN_err = "Please enter first name.";
   } else{
       // Prepare a select statement
-      $sql = "SELECT id FROM patient WHERE fname = ?";
+      $sql = "SELECT icDoctor FROM doctor WHERE doctorFirstName = ?";
       
-      if($stmt = $mysqli->prepare($sql)){
+      if($stmt = $con->prepare($sql)){
           // Bind variables to the prepared statement as parameters
-          $stmt->bind_param("s", $param_fname);
+          $stmt->bind_param("s", $param_DocFN);
           
           // Set parameters
-          $param_fname = trim($_POST["fname"]);
+          $param_DocFN = trim($_POST["docFN"]);
           
           // Attempt to execute the prepared statement
           if($stmt->execute()){
               // store result
               $stmt->store_result();
-              $fname = trim($_POST["fname"]);
+              $DocFN = trim($_POST["docFN"]);
 
           } else{
               echo "Oops! Something went wrong. Please try again later.";
@@ -41,24 +41,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   }
 
   // Validate lastname
-  if(empty(trim($_POST["lname"]))){
-    $lname_err = "Please enter last name.";
+  if(empty(trim($_POST["docLN"]))){
+    $DocLN_err = "Please enter last name.";
 } else{
     // Prepare a select statement
-    $sql = "SELECT id FROM patient WHERE lname = ?";
+    $sql = "SELECT icDoctor FROM doctor WHERE doctorLastName = ?";
     
-    if($stmt = $mysqli->prepare($sql)){
+    if($stmt = $con->prepare($sql)){
         // Bind variables to the prepared statement as parameters
-        $stmt->bind_param("s", $param_lname);
+        $stmt->bind_param("s", $param_DocLN);
         
         // Set parameters
-        $param_lname = trim($_POST["lname"]);
+        $param_DocLN = trim($_POST["docLN"]);
         
         // Attempt to execute the prepared statement
         if($stmt->execute()){
             // store result
             $stmt->store_result();
-            $lname = trim($_POST["lname"]);
+            $DocLN = trim($_POST["docLN"]);
 
         } else{
             echo "Oops! Something went wrong. Please try again later.";
@@ -69,19 +69,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 }
 
-    // Validate email
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter a username.";
+    // Validate Doctor ID
+    if(empty(trim($_POST["docID"]))){
+        $DocID_err = "Please enter Doctor ID.";
     } else{
         // Prepare a select statement
-        $sql = "SELECT id FROM patient WHERE username = ?";
+        $sql = "SELECT icDoctor FROM doctor WHERE doctorId = ?";
         
-        if($stmt = $mysqli->prepare($sql)){
+        if($stmt = $con->prepare($sql)){
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("s", $param_username);
+            $stmt->bind_param("s", $param_DocID);
             
             // Set parameters
-            $param_username = trim($_POST["username"]);
+            $param_DocID = trim($_POST["docID"]);
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
@@ -89,9 +89,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $stmt->store_result();
                 
                 if($stmt->num_rows == 1){
-                    $username_err = "This email is already taken.";
+                    $username_err = "This Doctor ID is already taken.";
                 } else{
-                    $username = trim($_POST["username"]);
+                    $DocID = trim($_POST["docID"]);
                 }
 
             } else{
@@ -104,30 +104,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
           // Validate IC Number
-  if(empty(trim($_POST["icPatient"]))){
-    $icPatient_err = "Please enter an ID No.";
+  if(empty(trim($_POST["docAddress"]))){
+    $DocAddress_err = "Please enter your Address";
   } else{
     // Prepare a select statement
-    $sql = "SELECT id FROM patient WHERE icPatient = ?";
+    $sql = "SELECT icDoctor FROM doctor WHERE doctorAddress = ?";
     
-    if($stmt = $mysqli->prepare($sql)){
+    if($stmt = $con->prepare($sql)){
         // Bind variables to the prepared statement as parameters
-        $stmt->bind_param("s", $param_icPatient);
+        $stmt->bind_param("s", $param_DocAddress);
 
         // Set parameters
-        $param_icPatient = trim($_POST["icPatient"]);
+        $param_DocAddress = trim($_POST["docAddress"]);
         
         // Attempt to execute the prepared statement
         if($stmt->execute()){
             // store result
             $stmt->store_result();
-            
-            if($stmt->num_rows == 1){
-                $icPatient_err = "This ID No. is already taken.";
-            } else{
-                $icPatient = trim($_POST["icPatient"]);
-            }
-            
+            $DocAddress = trim($_POST["docAddress"]);
         } else{
             echo "Oops! Something went wrong. Please try again later.";
         }
@@ -136,6 +130,107 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt->close();
     }
 }
+
+          // Validate IC Number
+          if(empty(trim($_POST["docContact"]))){
+            $docContact_err = "Please enter your Contact No.";
+          } else{
+            // Prepare a select statement
+            $sql = "SELECT icDoctor FROM doctor WHERE doctorPhone = ?";
+            
+            if($stmt = $con->prepare($sql)){
+                // Bind variables to the prepared statement as parameters
+                $stmt->bind_param("s", $param_docContact);
+        
+                // Set parameters
+                $param_docContact = trim($_POST["docContact"]);
+                
+                // Attempt to execute the prepared statement
+                if($stmt->execute()){
+                    // store result
+                    $stmt->store_result();
+                    $docContact = trim($_POST["docContact"]);
+                    
+                } else{
+                    echo "Oops! Something went wrong. Please try again later.";
+                }
+        
+                // Close statement
+                $stmt->close();
+            }
+        }
+
+    // Validate email
+    if(empty(trim($_POST["docEmail"]))){
+      $docEmail_err = "Please enter your Email";
+  } else{
+      // Prepare a select statement
+      $sql = "SELECT icDoctor FROM doctor WHERE doctorEmail = ?";
+      
+      if($stmt = $con->prepare($sql)){
+          // Bind variables to the prepared statement as parameters
+          $stmt->bind_param("s", $param_docEmail);
+          
+          // Set parameters
+          $param_docEmail = trim($_POST["docEmail"]);
+          
+          // Attempt to execute the prepared statement
+          if($stmt->execute()){
+              // store result
+              $stmt->store_result();
+              
+              if($stmt->num_rows == 1){
+                  $docEmail_err = "This Email is already taken.";
+              } else{
+                  $docEmail = trim($_POST["docEmail"]);
+              }
+
+          } else{
+              echo "Oops! Something went wrong. Please try again later.";
+          }
+
+          // Close statement
+          $stmt->close();
+      }
+  }
+
+
+// Validate Pet Birthdate
+if(empty(trim($_POST["docDOB"]))){
+  $doctorDOB_err = "Please enter Pet Birthdate";
+} else{
+
+  // Combine Y/M/D
+  $doctorDOB = trim($_POST['docDOB']);
+
+  // Prepare a select statement
+  $sql = "SELECT icDoctor FROM doctor WHERE doctorDOB = ?";
+  
+  if($stmt = $con->prepare($sql)){
+      // Bind variables to the prepared statement as parameters
+      $stmt->bind_param("s", $param_doctorDOB);
+      
+      // Set parameters
+      $param_doctorDOB = $doctorDOB;
+
+      
+      // Attempt to execute the prepared statement
+      if($stmt->execute()){
+          // store result
+          $stmt->store_result();
+          $doctorDOB = $doctorDOB;
+
+          
+      } else{
+          echo "Oops! Something went wrong. Please try again later.";
+      }
+
+      // Close statement
+      $stmt->close();
+  }
+}
+
+
 
     // Validate password
     if(empty(trim($_POST["password"]))){
@@ -156,116 +251,38 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     
-// Validate Pet Birthdate
-if(empty(trim($_POST["date"]))){
-    $patientDOB_err = "Please enter Pet Birthdate";
-  } else{
-
-    // Combine Y/M/D
-    $patientDOB = trim($_POST['date']);
-
-    // Prepare a select statement
-    $sql = "SELECT id FROM patient WHERE patientDOB = ?";
-    
-    if($stmt = $mysqli->prepare($sql)){
-        // Bind variables to the prepared statement as parameters
-        $stmt->bind_param("s", $param_patientDOB);
-        
-        // Set parameters
-        $param_patientDOB = $patientDOB;
-
-        
-        // Attempt to execute the prepared statement
-        if($stmt->execute()){
-            // store result
-            $stmt->store_result();
-            $patientDOB = $patientDOB;
-
-            
-        } else{
-            echo "Oops! Something went wrong. Please try again later.";
-        }
-
-        // Close statement
-        $stmt->close();
-    }
-}
-
-// Validate Pet Gender
-if(empty(trim($_POST["patientGender"]))){
-    $petGender_err = "Please select a pet gender";
-  } else{
-
-    // Prepare a select statement
-    $sql = "SELECT id FROM patient WHERE patientGender = ?";
-    
-    if($stmt = $mysqli->prepare($sql)){
-        // Bind variables to the prepared statement as parameters
-        $stmt->bind_param("s", $param_petGender);
-        
-        // Set parameters
-        $param_petGender = trim($_POST["patientGender"]);
-        
-        // Attempt to execute the prepared statement
-        if($stmt->execute()){
-            // store result
-            $stmt->store_result();
-            $petGender = trim($_POST["patientGender"]);
-
-            
-        } else{
-            echo "Oops! Something went wrong. Please try again later.";
-        }
-
-        // Close statement
-        $stmt->close();
-    }
-}
-
 
     // Check input errors before inserting in database
-    if(empty($icPatient_err) && empty($fname_err) && empty($lname_err) && empty($username_err) &&  empty($password_err) && empty($confirm_password_err) && empty($patientDOB_err) && empty($petGender_err)){
+    if(empty($DocFN_err) && empty($DocLN_err) && empty($DocID_err) && empty($DocAddress_err) && empty($docContact_err) && empty($docEmail_err) && empty($password_err) && empty($confirm_password_err) && empty($doctorDOB_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO patient (icPatient, fname, lname, username, password, patientDOB, patientGender) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO doctor (doctorId, password, doctorFirstName, doctorLastName, doctorAddress, doctorPhone, doctorEmail, doctorDOB) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
          
-        if($stmt = $mysqli->prepare($sql)){
+        if($stmt = $con->prepare($sql)){
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("sssssss", $param_icPatient, $param_fname, $param_lname, $param_username, $param_password, $param_patientDOB, $param_petGender);
+            $stmt->bind_param("ssssssss", $param_DocID, $param_password, $param_DocFN, $param_DocLN, $param_DocAddress, $param_docContact, $param_docEmail, $param_doctorDOB);
             
             // Set parameters
-            $param_icPatient = $icPatient;
-            $param_fname = $fname;
-            $param_lname = $lname;
-            $param_username = $username;
+            $param_DocID = $DocID;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-            $param_patientDOB = $patientDOB;
-            $param_petGender = $petGender;
+            $param_DocFN = $DocFN;
+            $param_DocLN = $DocLN;
+            $param_DocAddress = $DocAddress;
+            $param_docContact = $docContact;
+            $param_docEmail = $docEmail;
+            $param_doctorDOB = $doctorDOB;
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
-                // Redirect to login page
-                $_SESSION["success6"] = "<div style='" . "margin-bottom: 100px; padding-bottom: 20px;" . "' class=\"alert alert-success\">Your account has been registered! Sign in now!</div>";
-                header("location: index.php");
-                exit();
-                //if ($stmt2 = $mysqli->prepare("INSERT INTO petprofile (icPet) VALUES (?)")) {
-                //    $stmt2->bind_param('s', $param_icPatient);
-
-                //    $param_icPatient = $icPatient;
-
-                //    if (!$stmt2->execute()) {
-                //        throw new Exception($stmt2->error);
-                //    } else{
-                //        echo "Error insert to petprofile";
-                //    }
-                //}
-
-
-            } else{
-                $_SESSION["failed6"] = "<div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-success\">Something went wrong. Please try again later.</div>";
-                header("location: index.php");
-                exit();
-            }
+              // Redirect to login page
+              $_SESSION["success9"] = "<div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-success\">Your account has been registered! Sign in now!</div>";
+              header("location: doctoradmin.php");
+              exit();
+          } else{
+              $_SESSION["failed9"] = "<div style='" . "margin-bottom: 100px;" . "' class=\"alert alert-success\">Something went wrong. Please try again later.</div>";
+              header("location: doctoradmin.php");
+              exit();
+          }
 
             // Close statement
             $stmt->close();
@@ -273,187 +290,17 @@ if(empty(trim($_POST["patientGender"]))){
     }
     
     // Close connection
-    $mysqli->close();
+    $con->close();
 }
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <link rel="stylesheet" href="css3/owl.carousel.min.css">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css3/bootstrap.min.css">
-
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaringPaws Doctor Admin Registration</title>
     <!--  jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-    <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
-    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
-    <link rel="stylesheet" href="./css/bootstrap-iso.css" />
-
-    <!-- Bootstrap Date-Picker Plugin -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
-    <!-- Style -->
-    <style>
-        body {
-        font-family: "Roboto", sans-serif;
-        background-color: #fff; 
-        }
-        p {
-        color: #b3b3b3;
-        font-weight: 30; }
-        h1, h2, h3, h4, h5, h6,
-        .h1, .h2, .h3, .h4, .h5, .h6 {
-        font-family: "Roboto", sans-serif; }
-        a {
-        -webkit-transition: .3s all ease;
-        -o-transition: .3s all ease;
-        transition: .3s all ease; }
-        a:hover {
-            text-decoration: none !important; }
-        .content {
-            padding: 7rem 0; }
-        h2 {
-            font-size: 20px; }
-        .half, .half .container > .row {
-            height: 100vh; }
-        @media (max-width: 500px) {
-        .half .bg {
-            height: 500px; } }
-        .half .contents, .half .bg {
-            width: 100%; }
-        @media (max-width: 1199.98px) {
-        .half .contents, .half .bg {
-            width: 100%; } }
-        .half .contents .form-group, .half .bg .form-group {
-            /* spaces ng inputs */ margin-bottom: .2rem;
-            border: 2px solid #efefef;
-    /* ETO UNG LAPAD NUNG INPUTS */ padding: 5px 5px;
-            border-bottom: none; }
-            .half .contents .form-group.first, .half .bg .form-group.first {
-            border-top-left-radius: 7px;
-            border-top-right-radius: 7px; }
-            .half .contents .form-group.last, .half .bg .form-group.last {
-            border-bottom: 1px solid #efefef;
-            border-bottom-left-radius: 7px;
-            border-bottom-right-radius: 7px; }
-            .half .contents .form-group label, .half .bg .form-group label {
-            font-size: 12px;
-            display: block;
-            margin-bottom: 0;
-            color: #b3b3b3; }
-        .half .contents .form-control, .half .bg .form-control {
-            border: none;
-            padding: 0;
-            font-size: 10px;
-            border-radius: 0; }
-            .half .contents .form-control:active, .half .contents .form-control:focus, .half .bg .form-control:active, .half .bg .form-control:focus {
-            outline: none;
-            -webkit-box-shadow: none;
-            box-shadow: none; }
-
-        .half .bg {
-        background-size: cover;
-        background-position: center; }
-
-        .half a {
-        color: #888;
-        text-decoration: underline; }
-
-        .half .btn {
-        height: 54px;
-        padding-left: 30px;
-        padding-right: 30px; }
-
-        .half .forgot-pass {
-        position: relative;
-        top: 2px;
-        font-size: 14px; }
-
-        .control {
-        display: block;
-        position: relative;
-        padding-left: 30px;
-        margin-bottom: 15px;
-        cursor: pointer;
-        font-size: 14px; }
-        .control .caption {
-            position: relative;
-            top: .2rem;
-            color: #888; }
-
-        .control input {
-        position: absolute;
-        z-index: -1;
-        opacity: 0; }
-
-        .control__indicator {
-        position: absolute;
-        top: 2px;
-        left: 0;
-        height: 20px;
-        width: 20px;
-        background: #e6e6e6;
-        border-radius: 4px; }
-
-        .control--radio .control__indicator {
-        border-radius: 50%; }
-
-        .control:hover input ~ .control__indicator,
-        .control input:focus ~ .control__indicator {
-        background: #ccc; }
-
-        .control input:checked ~ .control__indicator {
-        background: #007bff; }
-
-        .control:hover input:not([disabled]):checked ~ .control__indicator,
-        .control input:checked:focus ~ .control__indicator {
-        background: #1a88ff; }
-
-        .control input:disabled ~ .control__indicator {
-        background: #e6e6e6;
-        opacity: 0.9;
-        pointer-events: none; }
-
-        .control__indicator:after {
-        font-family: 'icomoon';
-        content: '\e5ca';
-        position: absolute;
-        display: none;
-        font-size: 16px;
-        -webkit-transition: .3s all ease;
-        -o-transition: .3s all ease;
-        transition: .3s all ease; }
-
-        .control input:checked ~ .control__indicator:after {
-        display: block;
-        color: #fff; }
-
-        .control--checkbox .control__indicator:after {
-        top: 50%;
-        left: 50%;
-        margin-top: -1px;
-        -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%); }
-
-        .control--checkbox input:disabled ~ .control__indicator:after {
-        border-color: #7b7b7b; }
-
-        .control--checkbox input:disabled:checked ~ .control__indicator {
-        background-color: #7e0cf5;
-        opacity: .2; }
-
-  </style>
-<!--  jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
@@ -463,88 +310,217 @@ if(empty(trim($_POST["patientGender"]))){
 <!-- Bootstrap Date-Picker Plugin -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-    <title>Caring Paws | Sign Up</title>
-  </head>
-  <body>
-  
-  
+    <style>
+        * {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+a {
+  color: #666;
+  font-size: 14px;
+  display: block;
+}
+.login-title {
+  text-align: center;
+}
+#login-page {
+  display: flex;
+}
+.notice {
+  font-size: 13px;
+  text-align: center;
+  color: #666;
+}
+.login {
+  width: 50%;
+  height: 100vh;
+  background: #FFF;
+  padding: 70px;
+}
+.login a {
+  margin-top: 25px;
+  text-align: center;
+}
+.form-login {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+}
+.form-login label {
+  text-align: left;
+  font-size: 13px;
+  margin-top: 10px;
+  margin-left: 20px;
+  display: block;
+  color: #666;
+}
+.input-text,
+.input-password {
+  width: 100%;
+  background: #ededed;
+  border-radius: 25px;
+  margin: 4px 0 10px 0;
+  padding: 10px;
+  display: flex;
+}
+.icon {
+  padding: 4px;
+  color: #666;
+  min-width: 30px;
+  text-align: center;
+}
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  padding: 4px 0;
+  outline: none;
+}
+button[type="submit"] {
+  width: 100%;
+  border: 0;
+  border-radius: 25px;
+  padding: 14px;
+  background: #008552;
+  color: #FFF;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: ease all 0.3s;
+}
+button[type="submit"]:hover {
+  opacity: 0.9;
+}
+.background {
+  width: 70%;
+  padding: 40px;
+  height: 110vh;
+  background: linear-gradient(60deg, rgba(158, 189, 19, 0.5), rgba(0, 133, 82, 0.7)), url('') center no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-end;
+  align-content: center;
+  flex-direction: row;
+}
+.background h1 {
+  max-width: 420px;
+  color: #FFF;
+  text-align: right;
+  padding: 0;
+  margin: 0;
+}
+.background p {
+  max-width: 650px;
+  color: #1a1a1a;
+  font-size: 15px;
+  text-align: right;
+  padding: 0;
+  margin: 15px 0 0 0;
+}
+.created {
+  margin-top: 40px;
+  text-align: center;
+}
+.created p {
+  font-size: 13px;
+  font-weight: bold;
+  color: #008552;
+}
+.created a {
+  color: #666;
+  font-weight: normal;
+  text-decoration: none;
+  margin-top: 0;
+}
+.checkbox label {
+  display: inline;
+  margin: 0;
+}
+</style>
+</head>
+<body>
+<div id="login-page">
+  <div class="login">
+    <h2 class="login-title">CaringPaws<br>Doctor Admin Registration</h2>
+    <p class="notice">Please register to access the system</p>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+      
+      
 
-  <div  class="d-lg-flex half">
-    
-    <!--<div class="contents order-1 order-md-2">-->         
-                 
-      <div class="container">
-            
-        <div class="row align-items-center justify-content-center" >
 
-
-                <a href="main.php"><img src="logo/logo.png" alt="" height="70px"></a>
-       
-
-            <hr>
-
-          <div class="col-md-4" ><!--style="padding-top: 100px; padding-bottom: 100px;"-->
-            <h3>Sign Up to <strong>CaringPaws</strong></h3>
-            <p class="mb-4">Complete the required details in order to sign up.</p>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-
-              <div class="form-group form-group  <?php echo (!empty($fname_err)) ? 'has-error' : ''; ?> first">
+              <div class="input-text  <?php echo (!empty($DocFN_err)) ? 'has-error' : ''; ?>">
                 <!--<label for="username">First Name</label>-->
-                <input name="fname" type="text" class="form-control" placeholder="First name" id="fname" value="<?php echo $fname; ?>">
-                <span class="help-block"><?php echo $fname_err; ?></span>
+                <input name="docFN" type="text" class="form-control" placeholder="First name" id="fname" value="<?php echo $DocFN; ?>">
+                <span class="help-block"><?php echo $DocFN_err; ?></span>
               </div>
               
-              <div class="form-group form-group  <?php echo (!empty($lname_err)) ? 'has-error' : ''; ?> first">
+              <div class="input-text  <?php echo (!empty($DocLN_err)) ? 'has-error' : ''; ?>">
                 <!--<label for="username">Last Name</label>-->
-                <input name="lname" type="text" class="form-control" placeholder="Last Name" id="lname" value="<?php echo $lname; ?>">
-                <span class="help-block"><?php echo $lname_err; ?></span>
+                <input name="docLN" type="text" class="form-control" placeholder="Last Name" id="lname" value="<?php echo $DocLN; ?>">
+                <span class="help-block"><?php echo $DocLN_err; ?></span>
               </div>
-
-              <div class="form-group form-group  <?php echo (!empty($username_err)) ? 'has-error' : ''; ?> first">
-                <!--<label for="username">Email</label>-->
-                <input name="username" type="text" class="form-control" placeholder="Email" id="username" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
-              </div>
-
-              <div class="form-group form-group  <?php echo (!empty($icPatient_err)) ? 'has-error' : ''; ?> first">
+              
+              <div class="input-text <?php echo (!empty($DocID_err)) ? 'has-error' : ''; ?>">
                 <!--<label for="username">IC Number</label>-->
-                <input name="icPatient" type="text" class="form-control" placeholder="IC Number" id="icPatient" value="<?php echo $icPatient; ?>">
-                <span class="help-block"><?php echo $icPatient_err; ?></span>
+                <input name="docID" type="text" class="form-control" placeholder="Dr. ID" id="icDoctor" value="<?php echo $DocID; ?>">
+                <span class="help-block"><?php echo $DocID_err; ?></span>
               </div>
 
-              <div class="form-group form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?> first">
+              <div class="input-text  <?php echo (!empty($DocAddress_err)) ? 'has-error' : ''; ?>">
+                <!--<label for="username">Email</label>-->
+                <input name="docAddress" type="text" class="form-control" placeholder="Address" id="address" value="<?php echo $DocAddress; ?>">
+                <span class="help-block"><?php echo $DocAddress_err; ?></span>
+              </div>
+
+              <div class="input-text <?php echo (!empty($docContact_err)) ? 'has-error' : ''; ?>">
+                <!--<label for="username">Email</label>-->
+                <input name="docContact" type="text" class="form-control" placeholder="Contact No." id="contact" value="<?php echo $docContact; ?>">
+                <span class="help-block"><?php echo $docContact_err; ?></span>
+              </div>
+
+              <div class="input-text  <?php echo (!empty($docEmail_err)) ? 'has-error' : ''; ?>">
+                <!--<label for="username">Email</label>-->
+                <input name="docEmail" type="text" class="form-control" placeholder="Email" id="email" value="<?php echo $docEmail; ?>">
+                <span class="help-block"><?php echo $docEmail_err; ?></span>
+              </div>
+              <center><div name="selDate"></div><center>
+              <div class="input-text <?php echo (!empty($doctorDOB_err)) ? 'has-error' : ''; ?>">       
+                    <input class="form-control" id="date" name="docDOB" placeholder="YYYY/MM/DD" type="text"/>
+                    <span class="help-block"><?php echo $doctorDOB_err; ?></span>
+              </div>
+              
+              <div class="input-password <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                 <!--<label for="password">Password</label>-->
                 <input name="password" type="password" class="form-control" placeholder="New Password" id="password" value="<?php echo $password; ?>">
                 <span class="help-block"><?php echo $password_err; ?></span>
               </div>
 
-              <div class="form-group form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?> last mb-3">
+              <div class="input-password <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
                 <!--<label for="password"> Confirm Password</label>-->
                 <input name="confirm_password" type="password" class="form-control" placeholder="Confirm Password" id="password" value="<?php echo $confirm_password; ?>">
                 <span class="help-block"><?php echo $password_err; ?></span>
               </div>
-              
-              <div class="form-group">       
-                    <input class="form-control" id="date" name="date" placeholder="YYYY/MM/DD" type="text"/>
-              </div>
-              
-                        <div class="form-group form-group <?php echo (!empty($petGender_err)) ? 'has-error' : ''; ?> last mb-3">    
-                                    <div class="col-xs-4 col-md-4">
-                                        <label style="font-weight: bold;">Gender</label>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="patientGender" value="Male" required/> Male
-                                        </label>
-                                        <label class="radio-inline" >
-                                            <input type="radio" name="patientGender" value="Female" required/> Female
-                                        </label>
-                                    </div>
-                        </div>
-              <label style="font-weight: bold; padding-left: 25px;padding-right: 50px;">Terms and Conditions</label><input type="checkbox" name="patientGender" value="I Accept" required/> I Accept
-              <p style="align: justify; text-align: justify;">
-              <textarea disabled readonly style="align: justify; text-align: justify;" class="form-control" name="comment" >Terms and Conditions of CaringPaws
+
+              <h5 class="login-title">CaringPaws<br>Terms and Conditions
+              <br>
+              <input type="checkbox" name="" value="I Accept" required/> I Accept</h5>
+             
+              <textarea disabled readonly style="align: justify; text-align: justify; font-family: sans-serif;" class="input-text">
+              Terms and Conditions of CaringPaws
 
 Website terms and conditions are vital to the long-term success and security of your online business, as they outline the rules by which you and your users must abide. Without terms, you could be subject to abusive users, intellectual property theft, and unnecessary litigation.
 Our terms and conditions will help provide your business with the legal protection it deserves. 
+
 Alternatively, keep reading to learn more about what a terms and conditions agreement is and how to start writing your own.
 
 Table of Contents
@@ -829,25 +805,30 @@ You hereby waive any and all defenses you may have based on the electronic form 
 CONTACT US
 In order to resolve a complaint regarding the Site or to receive further information regarding use of the Site, please contact us at:
 
-</textarea>
+              </textarea>
+              
               </p>
               
-              <input type="submit" value="Sign Up" class="btn btn-block btn-primary">
+              <button type="submit"><i class="fas fa-door-open"></i> Sign Up</button>
+              <!--<input type="submit" value="Sign Up" class="btn btn-block btn-primary">-->
               <br>
-              <p>Have an account? <a href="index.php">Sign In</a>.</p>
-            </form>
-          </div>
-        </div>
-      </div>
+              
+    </form>
+
+    <div class="created"><p>Have an account? <a href="doctoradmin.php">Sign In</a>.</p>
+      <p>Created by <a href="./index.php">CaringPaws</a></p>
     </div>
-<!--<div class="bg order-2 order-md-1" style="height: 160%; background-image: url('assets/img/gallery/about.png');"></div>-->
+
   </div>
-    
-    
+  <div class="background">
+    <h1>We care about our Veterinarians</h1>
+  </div>
+</div>
+
 <script>
     $(document).ready(function(){
-      var date_input=$('input[name="date"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var date_input=$('input[name="docDOB"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso div[name="selDate"]').length> 0 ? $('.bootstrap-iso div[name="selDate"]').parent() : "div[name='selDate']";
       var options={
         format: 'yyyy-mm-dd',
         container: container,
@@ -857,5 +838,5 @@ In order to resolve a complaint regarding the Site or to receive further informa
       date_input.datepicker(options);
     })
 </script>
-  </body>
+</body>
 </html>

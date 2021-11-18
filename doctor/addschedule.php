@@ -4,7 +4,7 @@ include_once '../assets2/conn/dbconnect.php';
 // include_once 'connection/server.php';
 if(!isset($_SESSION['doctorSession']))
 {
-    header("Location: ../index.php");
+    header("Location: ../main.php");
 }
 
 $usersession = $_SESSION['doctorSession'];
@@ -208,7 +208,7 @@ a:hover {
                                      <i class="fa fa-calendar">
                                      </i>
                                     </div>
-                                    <input class="form-control" id="date" name="date" type="text" required/>
+                                    <input class="form-control" id="dated" name="date" type="text" required/>
                                    </div>
                                   </div>
                                  </div>
@@ -220,30 +220,14 @@ a:hover {
                                    </span>
                                   </label>
                                   <div class="col-sm-10">
-                                   <select class="select form-control" id="scheduleday" name="scheduleday" required>
-                                    <option value="Monday">
-                                     Monday
-                                    </option>
-                                    <option value="Tuesday">
-                                     Tuesday
-                                    </option>
-                                    <option value="Wednesday">
-                                     Wednesday
-                                    </option>
-                                    <option value="Thursday">
-                                     Thursday
-                                    </option>
-                                    <option value="Friday">
-                                     Friday
-                                    </option>
-                                    <option value="Saturday">
-                                     Saturday
-                                    </option>
-                                    <option value="Sunday">
-                                     Sunday
-                                    </option>
-                                   </select>
-                                  </div>
+                        <table class="col-sm-12">
+                            <tbody>
+                                <tr>
+                                   <td id="scheduled" ><input type="text" class="form-control" id="scheduleday" name="scheduleday"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                                </div>
                                  </div>
                                  <div class="form-group form-group-lg">
                                   <label class="control-label col-sm-2 requiredField" for="starttime">
@@ -449,6 +433,30 @@ a:hover {
         })
     })
 </script>
+
+<script>
+			var x = document.getElementById("dated");
+			
+			x.onchange = function(){
+				var enterdate = this.value;	
+                
+                //alert(enterdate);
+
+				$.ajax({
+					url:"https://caringpaws-ph.herokuapp.com/caringpaws/doctor/showDay.php",
+					method: "POST",
+					data:{ enterdate : enterdate },
+					success:function(data){
+						$("#scheduled").html(data);
+					}
+				})
+			}
+</script>
+
+
+
+
+
 <script type="text/javascript">
     $('.clockpicker').clockpicker();
 </script>

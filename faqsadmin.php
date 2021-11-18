@@ -133,7 +133,7 @@ button[type="submit"]:hover {
 .background {
   width: 70%;
   padding: 40px;
-  height: 100vh;
+  height: 110vh;
   background: linear-gradient(60deg, rgba(158, 189, 19, 0.5), rgba(0, 133, 82, 0.7)), url('') center no-repeat;
   background-size: cover;
   display: flex;
@@ -178,13 +178,26 @@ button[type="submit"]:hover {
   margin: 0;
 }
 </style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div id="login-page">
-  <div class="login">
+  <div class="login"><?php if (isset($_SESSION['success8']))    
+    {    
+        echo $_SESSION['success8'] ;
+        unset($_SESSION['success8']);
+    } 
+    if(isset($_SESSION['failed8'])){
+        echo $_SESSION['failed8'] ;
+        unset($_SESSION['failed8']);
+
+    }?>
     <h2 class="login-title">CaringPaws<br>FAQs Admin Login</h2>
     <p class="notice">Please login to access the system</p>
     <form class="form" role="form" method="POST" accept-charset="UTF-8">
+    
       <label for="email">Blogger ID No.</label>
       <div class="input-text">
         <i class="fas fa-envelope icon"></i>
@@ -204,7 +217,7 @@ button[type="submit"]:hover {
       <button type="submit" name="login"><i class="fas fa-door-open"></i> Sign in</button>
     </form>
 
-    <div class="created">
+    <div class="created"><p>Want to Sign Up? <a href="faqsregister.php">Sign Up</a>.</p>
       <p>Created by <a href="./index.php">CaringPaws</a></p>
     </div>
   </div>
