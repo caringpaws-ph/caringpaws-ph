@@ -443,7 +443,7 @@ a:hover {
                 //alert(enterdate);
 
 				$.ajax({
-					url:"https://caringpaws-ph.herokuapp.com/caringpaws/doctor/showDay.php",
+					url:"https://caringpaws-ph.herokuapp.com/doctor/showDay.php",
 					method: "POST",
 					data:{ enterdate : enterdate },
 					success:function(data){
