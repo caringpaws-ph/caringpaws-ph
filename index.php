@@ -563,7 +563,7 @@ table{
                         <div class="accordion-content">
                             <table id="healthTable">
                             <?php
-                                $connn = mysqli_connect("sql6.freemysqlhosting.net", "sql6451028", "UssyZb8LGc", "sql6451028");
+                                $connn = mysqli_connect("sql6.freemysqlhosting.net", "sql6452642", "4Is8Q2EqT2", "sql6452642");
                                 if ($connn-> connect_error) {
                                     die ("Connection failed:" . $connn-> connect_error);
                                 }
@@ -590,7 +590,7 @@ table{
                             <div class="accordion-content"><a href="javascript:window.location.href=myFunction();">
                                 <table id="healthTable">
                                 <?php
-                                    $connn = mysqli_connect("sql6.freemysqlhosting.net", "sql6451028", "UssyZb8LGc", "sql6451028");
+                                    $connn = mysqli_connect("sql6.freemysqlhosting.net", "sql6452642", "4Is8Q2EqT2", "sql6452642");
                                     if ($connn-> connect_error) {
                                         die ("Connection failed:" . $connn-> connect_error);
                                     }
@@ -626,7 +626,7 @@ table{
                 <div class="accordion-content">
                     <table id="behaviorTable">
                         <?php
-                            $connnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6451028", "UssyZb8LGc", "sql6451028");
+                            $connnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6452642", "4Is8Q2EqT2", "sql6452642");
                             if ($connnn-> connect_error) {
                                 die ("Connection failed:" . $connnn-> connect_error);
                             }
@@ -650,7 +650,7 @@ table{
                             <div class="accordion-content"><a href="javascript:window.location.href=myFunction();">
                     <table id="behaviorTable">
                         <?php
-                            $connnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6451028", "UssyZb8LGc", "sql6451028");
+                            $connnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6452642", "4Is8Q2EqT2", "sql6452642");
                             if ($connnn-> connect_error) {
                                 die ("Connection failed:" . $connnn-> connect_error);
                             }
@@ -682,7 +682,7 @@ table{
                     <div class="accordion-content">
                         <table id="nutritionTable">
                             <?php
-                                $connnnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6451028", "UssyZb8LGc", "sql6451028");
+                                $connnnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6452642", "4Is8Q2EqT2", "sql6452642");
                                 if ($connnnn-> connect_error) {
                                     die ("Connection failed:" . $connnnn-> connect_error);
                                 }
@@ -706,7 +706,7 @@ table{
                     <div class="accordion-content"><a href="javascript:window.location.href=myFunction();">
                         <table id="nutritionTable">
                             <?php
-                                $connnnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6451028", "UssyZb8LGc", "sql6451028");
+                                $connnnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6452642", "4Is8Q2EqT2", "sql6452642");
                                 if ($connnnn-> connect_error) {
                                     die ("Connection failed:" . $connnnn-> connect_error);
                                 }
@@ -738,7 +738,7 @@ table{
                 <div class="accordion-content">
                     <table id="careTable">
                         <?php
-                            $connnnnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6451028", "UssyZb8LGc", "sql6451028");
+                            $connnnnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6452642", "4Is8Q2EqT2", "sql6452642");
                             if ($connnnnn-> connect_error) {
                                 die ("Connection failed:" . $connnnnn-> connect_error);
                             }
@@ -762,7 +762,7 @@ table{
                     <div class="accordion-content"><a href="javascript:window.location.href=myFunction();">
                     <table id="careTable">
                         <?php
-                            $connnnnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6451028", "UssyZb8LGc", "sql6451028");
+                            $connnnnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6452642", "4Is8Q2EqT2", "sql6452642");
                             if ($connnnnn-> connect_error) {
                                 die ("Connection failed:" . $connnnnn-> connect_error);
                             }
@@ -794,7 +794,7 @@ table{
                 <div class="accordion-content">
                     <table id="breedsTable">
                         <?php
-                            $connnnnnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6451028", "UssyZb8LGc", "sql6451028");
+                            $connnnnnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6452642", "4Is8Q2EqT2", "sql6452642");
                             if ($connnnnnn-> connect_error) {
                                 die ("Connection failed:" . $connnnnnn-> connect_error);
                             }
@@ -818,7 +818,7 @@ table{
                     <div class="accordion-content"><a href="javascript:window.location.href=myFunction();">
                     <table id="breedsTable">
                         <?php
-                            $connnnnnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6451028", "UssyZb8LGc", "sql6451028");
+                            $connnnnnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6452642", "4Is8Q2EqT2", "sql6452642");
                             if ($connnnnnn-> connect_error) {
                                 die ("Connection failed:" . $connnnnnn-> connect_error);
                             }

@@ -681,7 +681,7 @@ $pfemale2="";
 						<tr class="headingTr"><td>Pet Name</td>
 						<td>Breed</td><td>Sex</td><td>Age</td><td>Date of Birth</td><td>Height</td><td>Weight</td><td>Photo</td><tr>
 							<?php
-                            $connnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6451028", "UssyZb8LGc", "sql6451028");
+                            $connnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6452642", "4Is8Q2EqT2", "sql6452642");
                             if ($connnn-> connect_error) {
                                 die ("Connection failed:" . $connnn-> connect_error);
                             }

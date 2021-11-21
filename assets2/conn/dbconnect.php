@@ -15,9 +15,9 @@ server with default setting (user 'root' with no password) */
 
 //define('DB_SERVER', 'remotemysql.com');
 define('DB_SERVER', 'sql6.freemysqlhosting.net');
-define('DB_USERNAME', 'sql6451028');
-define('DB_PASSWORD', 'UssyZb8LGc');
-define('DB_NAME', 'sql6451028');
+define('DB_USERNAME', 'sql6452642');
+define('DB_PASSWORD', '4Is8Q2EqT2');
+define('DB_NAME', 'sql6452642');
  
 /* Attempt to connect to MySQL database */
 $con = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
