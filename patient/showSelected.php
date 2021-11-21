@@ -4,7 +4,7 @@
 
     $P = isset($_POST['x']) ? $_POST['x'] : null;
 
-    $con22 = mysqli_connect("sql6.freemysqlhosting.net", "sql6451028", "UssyZb8LGc", "sql6451028");
+    $con22 = mysqli_connect("sql6.freemysqlhosting.net", "sql6452642", "4Is8Q2EqT2", "sql6452642");
     $sql22 = "SELECT * from petprofile WHERE Pname = '$P'";
     $res22 = mysqli_query($con22, $sql22);
 
