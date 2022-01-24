@@ -30,8 +30,8 @@ if (isset($_POST['submit'])) {
     
     $mail->IsSMTP();
     
-    $mail->Username   = "lawrs.rds@gmail.com";            // SMTP account username example
-    $mail->Password   = "pbokmttytvoxhter";            // SMTP account password example
+    $mail->Username   = "caringpaws.ph.new@gmail.com";            // SMTP account username example
+    $mail->Password   = "ykcrhcfqvmlciahg";            // SMTP account password example
 
     $mail->setFrom($email2, 'New from Contact');
     $mail->addAddress($to);
