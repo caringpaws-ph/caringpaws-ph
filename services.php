@@ -336,7 +336,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <tr>
                         <table>  
                         <?php
-                            $connnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6452642", "4Is8Q2EqT2", "sql6452642");
+                            $connnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6467674", "NFb37kSeTd", "sql6467674");
                             if ($connnn-> connect_error) {
                                 die ("Connection failed:" . $connnn-> connect_error);
                             }
@@ -366,7 +366,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <tr>
                         <table>  
                         <?php
-                            $connnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6452642", "4Is8Q2EqT2", "sql6452642");
+                            $connnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6467674", "NFb37kSeTd", "sql6467674");
                             if ($connnn-> connect_error) {
                                 die ("Connection failed:" . $connnn-> connect_error);
                             }
@@ -396,7 +396,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <tr>
                         <table>  
                         <?php
-                            $connnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6452642", "4Is8Q2EqT2", "sql6452642");
+                            $connnn = mysqli_connect("sql6.freemysqlhosting.net", "sql6467674", "NFb37kSeTd", "sql6467674");
                             if ($connnn-> connect_error) {
                                 die ("Connection failed:" . $connnn-> connect_error);
                             }
