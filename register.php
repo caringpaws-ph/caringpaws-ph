@@ -539,7 +539,7 @@ if(empty(trim($_POST["patientGender"]))){
                                         </label>
                                     </div>
                         </div>
-              <label style="font-weight: bold; padding-left: 25px;padding-right: 50px;">Terms and Conditions</label><input type="checkbox" name="patientGender" value="I Accept" required/> I Accept
+              <label style="font-weight: bold; padding-left: 25px;padding-right: 50px;">Terms and Conditions</label><input type="checkbox" name="termsAccepted" value="I Accept" required/> I Accept
               <p style="align: justify; text-align: justify;">
               <textarea disabled readonly style="align: justify; text-align: justify;" class="form-control" name="comment" >Terms and Conditions of CaringPaws
 
