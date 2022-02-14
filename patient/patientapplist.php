@@ -118,7 +118,7 @@ echo "<th>Scheduled Day </th>";
 echo "<th>Scheduled Date </th>";
 echo "<th>Start Time</th>";
 echo "<th>End Time</th>";
-echo "<th>Print Your Form</th>";
+echo "<th>Copy of Form</th>";
 echo "</tr>";
 echo "</thead>";
 $res = mysqli_query($con, "SELECT a.*, b.*,c.*
