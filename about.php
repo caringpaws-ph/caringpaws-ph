@@ -299,7 +299,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                         <div class="about-details-cap mb-50">
 
-                            <h4>Vission</h4>
+                            <h4>Vision</h4>
                                 <p style="text-align:justify;">CaringPaws works to be the most trusted and respected pet care provider in our community by administering the best possible medical and emotional care and giving outstanding customer service to every patient and every client every visit.
                             </p>
                    
@@ -412,6 +412,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                          </div>
                        </div>
                     </div>
+                    <br>
                     <div class="col-xl-2 col-lg-2 col-md-4 col-sm-5">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
