@@ -148,7 +148,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Caring Paws | Services</title>
+    <title>CaringPaws | Services</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -323,7 +323,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <!-- Section Tittle -->
                         <div class="section-tittle text-center mb-70">
 
-                            <span>Caring Paws</span>
+                            <span>CaringPaws</span>
                             <h2>Best Pet Care Services</h2>
 
                         </div> 
@@ -432,7 +432,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <div class="contact_text text-center">
                             <div class="section_title text-center">
                                 <h3>Reach us here!</h3>
-                                <p>Because we know that even the best technology is only as good as the people behind it.<br>We respond to Messages and Calls from 8 AM to 10 PM. </p>
+                                <p>Because we know that even the best technology is only as good as the people behind it.<br>We respond to messages and calls from 8 AM to 10 PM. </p>
                             </div>
                             <div class="contact_btn d-flex align-items-center justify-content-center">
                                 <a href="https://m.me/CaringPaws15" class="btn white-btn">Messenger</a>
@@ -459,7 +459,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                              </div>
                              <div class="footer-tittle">
                                  <div class="footer-pera">
-                                     <p>CaringPaws is your trusted source of pet care information. Talk to a vet today! Contact us now and make an appointment today.</p>
+                                     <p>CaringPaws is your trusted source of pet care information. Talk to a vet today! Contact us and make an appointment now.</p>
                                 </div>
                              </div>
                              <!-- social -->
@@ -475,7 +475,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div class="col-xl-2 col-lg-2 col-md-4 col-sm-5">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Caring Paws</h4>
+                                <h4>CaringPaws</h4>
                                 <ul>
                                     <li><a href="index.php">Home</a></li>
                                     <li><a href="about.php">About Us</a></li>
@@ -520,7 +520,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                          <div class="col-xl-12 ">
                              <div class="footer-copy-right text-center">
                                  <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Caring Paws <i class="fa fa-heart" aria-hidden="true"></i><a href="#" target="_blank"></a>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | CaringPaws <i class="fa fa-heart" aria-hidden="true"></i><a href="#" target="_blank"></a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                              </div>
                          </div>

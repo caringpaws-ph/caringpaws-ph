@@ -149,7 +149,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-    <title>Caring Paws | Home</title>
+    <title>CaringPaws | Home</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -1108,7 +1108,7 @@ table{
                         <!-- Section Tittle -->
                         <div class="section-tittle text-center mb-70">
                             <span>Our Professional Veterinarians from</span>
-                            <h2>Caring Paws</h2>
+                            <h2>CaringPaws</h2>
                         </div> 
                     </div>
                 </div>
@@ -1282,7 +1282,7 @@ table{
                         <div class="contact_text text-center">
                             <div class="section_title text-center">
                                 <h3>Reach us here!</h3>
-                                <p>Because we know that even the best technology is only as good as the people behind it.<br>We respond to Messages and Calls from 8 AM to 10 PM. </p>
+                                <p>Because we know that even the best technology is only as good as the people behind it.<br>We respond to messages and calls from 8 AM to 10 PM. </p>
                             </div>
                             <div class="contact_btn d-flex align-items-center justify-content-center">
                                 <a href="https://m.me/CaringPawsPH" class="btn white-btn">Messenger</a>
@@ -1325,7 +1325,7 @@ table{
                     <div class="col-xl-2 col-lg-2 col-md-4 col-sm-5">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Caring Paws</h4>
+                                <h4>CaringPaws</h4>
                                 <ul>
                                     <li><a href="index.php">Home</a></li>
                                     <li><a href="about.php">About Us</a></li>
@@ -1370,7 +1370,7 @@ table{
                          <div class="col-xl-12 ">
                              <div class="footer-copy-right text-center">
                                  <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Caring Paws <i class="fa fa-heart" aria-hidden="true"></i><a href="#" target="_blank"></a>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | CaringPaws <i class="fa fa-heart" aria-hidden="true"></i><a href="#" target="_blank"></a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                              </div>
                          </div>
