@@ -110,7 +110,7 @@ echo "<div class='panel-body'>";
 echo "<table class='table table-hover'>";
 echo "<thead>";
 echo "<tr>";
-echo "<th>Application I.D </th>";
+echo "<th>Application ID </th>";
 echo "<th>IC No. </th>";
 echo "<th>Owner Last Name </th>";
 echo "<th>Pet Name </th>";

@@ -1007,7 +1007,7 @@ table{
                                 <div class="row ">
                                     <div class="col-xl-12">
                                         <div class="section-tittle section-tittle2 mb-70">
-                                            <h3 style="font-weight: bold; color: white;">Ask a Vet Questions Online Now <hr> </h3>
+                                            <h3 style="font-weight: bold; color: white;">Ask a Vet Your Questions Now! <hr> </h3>
                                             <p style="color: white;">Ascertained Pet Professionals supporting from 8 AM to 10 PM!</p>
                                         </div>
                                     </div>
