@@ -14,10 +14,10 @@ server with default setting (user 'root' with no password) */
 //define('DB_NAME', 'db_healthcare');
 
 define('DB_SERVER', 'sql6.freemysqlhosting.net');
-define('DB_USERNAME', 'sql6467674');
-define('DB_PASSWORD', 'NFb37kSeTd');
-define('DB_NAME', 'sql6467674');
- 
+define('DB_USERNAME', 'sql6472772');
+define('DB_PASSWORD', 'Bftyfpt58L');
+define('DB_NAME', 'sql6472772');
+
 /* Attempt to connect to MySQL database */
 $mysqli2 = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
  
