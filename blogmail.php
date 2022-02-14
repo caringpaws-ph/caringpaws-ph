@@ -38,8 +38,8 @@ if($_POST) {
      
      $mail->IsSMTP();
      
-     $mail->Username   = "lawrs.rds@gmail.com";            // SMTP account username example
-     $mail->Password   = "pbokmttytvoxhter";            // SMTP account password example
+     $mail->Username   = "phcaringpaws@gmail.com";            // SMTP account username example
+     $mail->Password   = "gblbihvpqosasoed";            // SMTP account password example
 
       if ($subject2 == '') { 
             $mail->setFrom($email2, 'Asked by ' . $name2);

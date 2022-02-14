@@ -40,8 +40,8 @@ if(isset($_POST["send_message"])){
         
         $mail->IsSMTP();
         
-        $mail->Username   = "caringpaws.ph.new@gmail.com";            // SMTP account username example
-        $mail->Password   = "ykcrhcfqvmlciahg";            // SMTP account password example
+        $mail->Username   = "phcaringpaws@gmail.com";            // SMTP account username example
+        $mail->Password   = "gblbihvpqosasoed";            // SMTP account password example
 
         //header
         $body = $message_body;
@@ -110,8 +110,8 @@ if(isset($_POST["send_message"])){
     
     $mail->IsSMTP();
     
-    $mail->Username   = "caringpaws.ph.new@gmail.com";            // SMTP account username example
-    $mail->Password   = "ykcrhcfqvmlciahg";            // SMTP account password example
+    $mail->Username   = "phcaringpaws@gmail.com";            // SMTP account username example
+    $mail->Password   = "gblbihvpqosasoed";            // SMTP account password example
 
     $mail->setFrom($fromemail, 'Ask A Vet Question');
     $mail->addAddress($to);
