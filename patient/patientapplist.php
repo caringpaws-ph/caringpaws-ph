@@ -102,7 +102,7 @@ if (mysqli_num_rows($res)==0) {
 echo "<div class='container'>";
 echo "<div class='row'>";
 echo "<div class='page-header'>";
-echo "<h1 style=" . "'font-weight: bold;'" . ">" . $userRow2['fname'] . "'s Appointment List. </h1>";
+echo "<h1 style=" . "'font-weight: bold;'" . ">" . $userRow2['fname'] . "'s Appointment List </h1>";
 echo "</div>";
 echo "<div class='panel panel-primary'>";
 echo "<div style=" . "'font-weight: bold;'" . "class='panel-heading'>Your List of Appointment</div>";
@@ -110,7 +110,7 @@ echo "<div class='panel-body'>";
 echo "<table class='table table-hover'>";
 echo "<thead>";
 echo "<tr>";
-echo "<th>Application I.D.</th>";
+echo "<th>Application I.D </th>";
 echo "<th>IC No. </th>";
 echo "<th>Owner Last Name </th>";
 echo "<th>Pet Name </th>";
