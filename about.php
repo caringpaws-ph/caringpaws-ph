@@ -412,11 +412,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                          </div>
                        </div>
                     </div>
-                    <br>
                     <div class="col-xl-2 col-lg-2 col-md-4 col-sm-5">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Caring Paws</h4>
+                                <h4>CaringPaws</h4>
                                 <ul>
                                     <li><a href="index.php">Home</a></li>
                                     <li><a href="about.php">About Us</a></li>
